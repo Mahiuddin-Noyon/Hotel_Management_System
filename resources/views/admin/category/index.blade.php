@@ -34,6 +34,13 @@
                             <td>
                                 <div class="d-flex px-2 py-1">
                                     <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm"> {{$key+1}} </h6>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex px-2 py-1">
+                                    <div class="d-flex flex-column justify-content-center">
                                         <h6 class="mb-0 text-sm"> {{$category->name}} </h6>
                                     </div>
                                 </div>
