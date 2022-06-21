@@ -103,9 +103,8 @@
                             <div class="copyright text-center text-sm text-white text-lg-start">
                                 © <script>
                                     document.write(new Date().getFullYear())
-                                </script>,
-                                made with <a href="https://github.com/Mahiuddin-Noyon/" class="text-danger">Shahinur</a> <i class="fa fa-heart" aria-hidden="true"></i> designed by
-                                <a href="https://www.creative-tim.com" class="font-weight-bold text-white" target="_blank">Creative Tim</a>
+                                </script>
+                                
                             </div>
                         </div>
 
