@@ -21,14 +21,15 @@
                 <input type="text" name="name" value="{{$category->name}}" class="form-control">
             </div>
             <label class="form-label my-2">Category Image</label>
-            <div class="input-group input-group-outline mb-3">
-                <input type="file" name="image" value="{{$category->image}}" class="form-control">
+            <div class="input-group input-group-outline">
+                <input type="file" name="image" id="editimage" value="{{$category->image}}" class="form-control">
             </div>
-            <img class="img-thumbnail right" src="{{url('uploads/category/'. $category->image)}}" alt="image" style="height: 70px; width:90px;">
-            <div class="input-group input-group-outline my-3">
-                <a href="{{ route('admin.category.index') }}" class="btn btn-danger">Back</a>
-                <button type="submit" class="btn btn-primary">Save</button>
+            <div class="form-group my-2">
+                <small>Recent image: </small>
+                <img class="img-thumbnail img-responsive" src="{{url('uploads/category/'. $category->image)}}" alt="image" style="height: 70px; width:90px;">
             </div>
+            <a href="{{ route('admin.category.index') }}" class="btn btn-danger">Cancel</a>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
 </div>

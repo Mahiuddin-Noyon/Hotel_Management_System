@@ -9,6 +9,8 @@
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
+
+
             @if( Request::is('admin*'))
 
             <li class="nav-item">
@@ -30,10 +32,19 @@
                     <span class="nav-link-text ms-1">Room Categories</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ Request::is('admin/room*') ? 'active bg-gradient-primary': '' }}"
+                href="{{route('admin.room.index')}}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">category</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Rooms</span>
+                </a>
+            </li>
 
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('admin/facilities*') ? 'active bg-gradient-primary': '' }} "
-                href="">
+                <a class="nav-link text-white {{ Request::is('admin/facility*') ? 'active bg-gradient-primary': '' }} "
+                href=" {{ route('admin.facility.index') }} ">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">restaurant</i>
                     </div>
@@ -65,6 +76,8 @@
                 </form>
             </li>
             @endif
+
+
             @if( Request::is('client*'))
             <li class="nav-item">
                 <a class="nav-link text-white {{ Request::is('client/dashboard*') ? 'active bg-gradient-primary': '' }}"

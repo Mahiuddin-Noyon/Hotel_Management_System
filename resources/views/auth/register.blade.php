@@ -64,7 +64,6 @@
                                 <form role="form" class="text-start" method="POST" action="{{ route('register') }}">
                                     @csrf
 
-
                                     <div class="input-group input-group-outline my-3">
                                         <label class="form-label">Name</label>
                                         <input type="text" class="form-control" name="name" required autofocus>
@@ -78,7 +77,7 @@
                                         <input type="password" class="form-control" name="password" required>
                                     </div>
                                     <div class="input-group input-group-outline mb-3">
-                                        <label class="form-label">Password</label>
+                                        <label class="form-label">Confirm Password</label>
                                         <input type="password" class="form-control" name="password_confirmation" required>
                                     </div>
                                     <div class="text-center">
@@ -104,7 +103,7 @@
                                 © <script>
                                     document.write(new Date().getFullYear())
                                 </script>
-                                
+
                             </div>
                         </div>
 

@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Room;
 use Carbon\Carbon;
 
-class CategoryController extends Controller
+class RoomController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('admin.category.index', compact('categories'));
+        $rooms = Room::all();
+        return view('admin.room.index', compact('rooms'));
     }
 
     /**
@@ -27,7 +28,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        $categories = Category::all();
+        return view('admin.room.create', compact('categories'));
     }
 
     /**
@@ -43,20 +45,24 @@ class CategoryController extends Controller
         if (isset($image)) {
             $currendate = Carbon::now()->toDateString();
             $imagename = $slug . '-' . $currendate . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
-            if (!file_exists('uploads/category')) {
-                mkdir('upload/category', 0777, true);
+            if (!file_exists('uploads/room')) {
+                mkdir('upload/room', 0777, true);
             }
-            $image->move('uploads/category', $imagename);
+            $image->move('uploads/room', $imagename);
         } else {
             $imagename = 'default.png';
         }
 
-        $category = new Category();
-        $category->name = $request->name;
-        $category->slug = str_slug($request->name);
-        $category->image = $imagename;
-        $category->save();
-        return redirect()->route('admin.category.index')->with('successMsg', 'Category Added Successfully');
+        $room = new Room();
+
+        $room->name = $request->name;
+        $room->slug = str_slug($request->name);
+        $room->category_id = $request->category;
+        $room->description = $request->description;
+        $room->image = $imagename;
+        $room->save();
+        Toastr::success('success','Room added successfully');
+        return redirect()->route('admin.room.index')->with('successMsg', 'Room Added Successfully');
     }
 
     /**
@@ -78,8 +84,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
-        return view('admin.category.edit', compact('category'));
+        $room = Room::find($id);
+        $categories = Category::all();
+        return view('admin.room.edit', compact('room', 'categories'));
     }
 
     /**
@@ -91,27 +98,31 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Category::find($id);
+        $room = Room::find($id);
 
         $image = $request->file('image');
         $slug = str_slug($request->name);
         if (isset($image)) {
             $currendate = Carbon::now()->toDateString();
             $imagename = $slug . '-' . $currendate . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
-            if (!file_exists('uploads/category')) {
-                mkdir('upload/category', 0777, true);
+            if (!file_exists('uploads/room')) {
+                mkdir('upload/room', 0777, true);
             }
-            unlink('uploads/category/' . $category->image);
-            $image->move('uploads/category', $imagename);
+            if (file_exists('uploads/room/' . $room->image)) {
+                unlink('uploads/room/' . $room->image);
+            }
+            $image->move('uploads/room', $imagename);
         } else {
-            $imagename = $category->image;
+            $imagename = 'default.png';
         }
 
-        $category->name = $request->name;
-        $category->slug = str_slug($request->name);
-        $category->image = $imagename;
-        $category->update();
-        return redirect()->route('admin.category.index')->with('successMsg', 'Category Updated Successfully');
+        $room->name = $request->name;
+        $room->slug = str_slug($request->name);
+        $room->category_id = $request->category;
+        $room->description = $request->description;
+        $room->image = $imagename;
+        $room->update();
+        return redirect()->route('admin.room.index')->with('successMsg', 'Room Updated Successfully');
     }
 
     /**
@@ -122,13 +133,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-
-        $category = Category::find($id);
-
-        if (file_exists('uploads/category/' . $category->image)) {
-            unlink('uploads/category/' . $category->image);
+        $room = Room::find($id);
+        if (file_exists('uploads/room/' . $room->image)) {
+            unlink('uploads/room/' . $room->image);
         }
-        $category->delete();
-        return redirect()->back()->with('successMsg', 'Category Deleted Successfully');
+        $room->delete();
+        return redirect()->back()->with('successMsg', 'Room Deleted Successfully');
     }
 }

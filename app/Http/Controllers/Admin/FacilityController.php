@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
+use App\Facilitiy;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 
-class CategoryController extends Controller
+class FacilityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('admin.category.index', compact('categories'));
+        $facilities = Facilitiy::all();
+        return view('admin.facility.index', compact('facilities'));
     }
 
     /**
@@ -27,7 +28,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        $categories = Category::all();
+        return view('admin.facility.create', compact('categories'));
     }
 
     /**
@@ -43,20 +45,23 @@ class CategoryController extends Controller
         if (isset($image)) {
             $currendate = Carbon::now()->toDateString();
             $imagename = $slug . '-' . $currendate . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
-            if (!file_exists('uploads/category')) {
-                mkdir('upload/category', 0777, true);
+            if (!file_exists('uploads/facility')) {
+                mkdir('upload/facility', 0777, true);
             }
-            $image->move('uploads/category', $imagename);
+            $image->move('uploads/facility', $imagename);
         } else {
             $imagename = 'default.png';
         }
 
-        $category = new Category();
-        $category->name = $request->name;
-        $category->slug = str_slug($request->name);
-        $category->image = $imagename;
-        $category->save();
-        return redirect()->route('admin.category.index')->with('successMsg', 'Category Added Successfully');
+        $facility = new Facilitiy();
+
+        $facility->name = $request->name;
+        $facility->slug = str_slug($request->name);
+        $facility->category_id = $request->category;
+        $facility->description = $request->description;
+        $facility->image = $imagename;
+        $facility->save();
+        return redirect()->route('admin.facility.index')->with('successMsg', 'Facility Added Successfully');
     }
 
     /**
@@ -78,8 +83,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::find($id);
-        return view('admin.category.edit', compact('category'));
+        $facility = Facilitiy::find($id);
+        $categories = Category::all();
+        return view('admin.facility.edit', compact('facility', 'categories'));
     }
 
     /**
@@ -91,27 +97,31 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Category::find($id);
+        $facility = Facilitiy::find($id);
 
         $image = $request->file('image');
         $slug = str_slug($request->name);
         if (isset($image)) {
             $currendate = Carbon::now()->toDateString();
             $imagename = $slug . '-' . $currendate . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
-            if (!file_exists('uploads/category')) {
-                mkdir('upload/category', 0777, true);
+            if (!file_exists('uploads/facility')) {
+                mkdir('upload/facility', 0777, true);
             }
-            unlink('uploads/category/' . $category->image);
-            $image->move('uploads/category', $imagename);
+            if (file_exists('uploads/facility/' . $facility->image)) {
+                unlink('uploads/facility/' . $facility->image);
+            }
+            $image->move('uploads/facility', $imagename);
         } else {
-            $imagename = $category->image;
+            $imagename = 'default.png';
         }
 
-        $category->name = $request->name;
-        $category->slug = str_slug($request->name);
-        $category->image = $imagename;
-        $category->update();
-        return redirect()->route('admin.category.index')->with('successMsg', 'Category Updated Successfully');
+        $facility->name = $request->name;
+        $facility->slug = str_slug($request->name);
+        $facility->category_id = $request->category;
+        $facility->description = $request->description;
+        $facility->image = $imagename;
+        $facility->update();
+        return redirect()->route('admin.facility.index')->with('successMsg', 'Facility Updated Successfully');
     }
 
     /**
@@ -122,13 +132,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-
-        $category = Category::find($id);
-
-        if (file_exists('uploads/category/' . $category->image)) {
-            unlink('uploads/category/' . $category->image);
+        $facility = Facilitiy::find($id);
+        if (file_exists('uploads/facility/' . $facility->image)) {
+            unlink('uploads/facility/' . $facility->image);
         }
-        $category->delete();
-        return redirect()->back()->with('successMsg', 'Category Deleted Successfully');
+        $facility->delete();
+        return redirect()->back()->with('successMsg', 'Facility Deleted Successfully');
     }
 }
