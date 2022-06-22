@@ -30,8 +30,7 @@
             <div class="input-group input-group-outline">
                 <select class="form-control" name="category">
                     @foreach($categories as $category)
-                    <option {{ $category->id == $room->category->id ? 'selected':''}}
-                        value="{{$category->id}}">{{$category->name}}</option>
+                    <option {{ $category->id == $room->category->id ? 'selected':''}} value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -39,6 +38,10 @@
             <label class="form-label my-2">Room Image</label>
             <div class="input-group input-group-outline mb-3">
                 <input type="file" name="image" class="form-control">
+            </div>
+            <div class="form-group my-2">
+                <small>Recent image: </small>
+                <img class="img-thumbnail img-responsive" src="{{url('uploads/category/'. $category->image)}}" alt="image" style="height: 70px; width:90px;">
             </div>
             <a href="{{ route('admin.room.index') }}" class="btn btn-danger">Cancel</a>
             <button type="submit" class="btn btn-primary">Update</button>

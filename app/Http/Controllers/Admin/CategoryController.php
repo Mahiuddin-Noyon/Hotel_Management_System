@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
 
 class CategoryController extends Controller
@@ -56,7 +57,8 @@ class CategoryController extends Controller
         $category->slug = str_slug($request->name);
         $category->image = $imagename;
         $category->save();
-        return redirect()->route('admin.category.index')->with('successMsg', 'Category Added Successfully');
+        Toastr::success('success','Category Added Successfully');
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -111,7 +113,8 @@ class CategoryController extends Controller
         $category->slug = str_slug($request->name);
         $category->image = $imagename;
         $category->update();
-        return redirect()->route('admin.category.index')->with('successMsg', 'Category Updated Successfully');
+        Toastr::success('success','Category Updated Successfully');
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -129,6 +132,7 @@ class CategoryController extends Controller
             unlink('uploads/category/' . $category->image);
         }
         $category->delete();
-        return redirect()->back()->with('successMsg', 'Category Deleted Successfully');
+        Toastr::success('success','Category Deleted Successfully');
+        return redirect()->back();
     }
 }
