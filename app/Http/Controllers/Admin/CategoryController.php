@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class CategoryController extends Controller
 {
@@ -37,9 +38,25 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $image = $request->file('image');
+        $slug = str_slug($request->name);
+        if(isset($image))
+        {
+            $currendate = Carbon::now()->toDateString();
+            $imagename = $slug.'-'.$currendate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
+            if(!file_exists('uploads/category'))
+            {
+                mkdir('upload/category', 0777, true);
+            }
+            $image->move('uploads/category', $imagename);
+        }else{
+            $imagename = 'default.png';
+        }
+
         $category = new Category();
         $category->name = $request->name;
         $category->slug = str_slug($request->name);
+        $category->image = $imagename;
         $category->save();
         return redirect()->route('admin.category.index')->with('successMsg','Category Added Successfully');
     }

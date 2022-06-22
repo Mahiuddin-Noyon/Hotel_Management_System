@@ -49,7 +49,7 @@
                                 <p class="text-xs font-weight-bold mb-0">{{$category->slug}}</p>
                             </td>
                             <td>
-                                <img class="img-thumbnail" src="https://www.thespruce.com/thmb/rmDEwUoAgwucuusBRvFoE4JBc0o=/4000x2250/smart/filters:no_upscale()/master-bedroom-in-new-luxury-home-with-chandelier-and-large-bank-of-windows-with-view-of-trees-1222623844-212940f4f89e4b69b6ce56fd968e9351.jpg"
+                                <img class="img-thumbnail" src="{{url('uploads/category/'. $category->image)}}"
                                 alt="image" style="height: 70px; width:90px;">
                             </td>
                             <td>

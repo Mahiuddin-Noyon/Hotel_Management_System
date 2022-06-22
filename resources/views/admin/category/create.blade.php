@@ -19,6 +19,10 @@
                 <label class="form-label">Category Name</label>
                 <input type="text" name="name" class="form-control">
             </div>
+            <label class="form-label">Category Image</label>
+            <div class="input-group input-group-outline my-3">
+                <input type="file" name="image" class="form-control">
+            </div>
             <a href="{{ route('admin.category.index') }}" class="btn btn-danger">Back</a>
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
