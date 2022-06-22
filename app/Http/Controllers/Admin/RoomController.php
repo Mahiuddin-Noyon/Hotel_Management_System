@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 use App\Room;
 use Carbon\Carbon;
 
@@ -62,7 +63,7 @@ class RoomController extends Controller
         $room->image = $imagename;
         $room->save();
         Toastr::success('success','Room added successfully');
-        return redirect()->route('admin.room.index')->with('successMsg', 'Room Added Successfully');
+        return redirect()->route('admin.room.index');
     }
 
     /**
@@ -122,7 +123,8 @@ class RoomController extends Controller
         $room->description = $request->description;
         $room->image = $imagename;
         $room->update();
-        return redirect()->route('admin.room.index')->with('successMsg', 'Room Updated Successfully');
+        Toastr::success('success','Room Updated Successfully');
+        return redirect()->route('admin.room.index');
     }
 
     /**
@@ -138,6 +140,7 @@ class RoomController extends Controller
             unlink('uploads/room/' . $room->image);
         }
         $room->delete();
-        return redirect()->back()->with('successMsg', 'Room Deleted Successfully');
+        Toastr::success('success','Room Deleted Successfully');
+        return redirect()->back();
     }
 }
