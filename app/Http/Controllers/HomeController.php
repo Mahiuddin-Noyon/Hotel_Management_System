@@ -2,27 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Facilitiy;
+use App\Room;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('home');
+        $rooms = Room::all();
+        return view('frontend.home',compact('rooms'));
+    }
+    public function room()
+    {
+        $rooms = Room::all();
+        return view('frontend.room',compact('rooms'));
+    }
+    public function restaurant()
+    {
+        $restaurants = Facilitiy::all();
+        return view('frontend.restaurant',compact('restaurants'));
+    }
+    public function about()
+    {
+        //
+    }
+    public function contact()
+    {
+        //
     }
 }

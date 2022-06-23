@@ -20,6 +20,9 @@ class CreateRoomsTable extends Migration
             $table->string('slug');
             $table->string('description');
             $table->string('image');
+            $table->string('bed');
+            $table->integer('persion');
+            $table->integer('price');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });

@@ -24,8 +24,10 @@
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Room Name</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Room Category</th>
-                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Room Description</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Room Images</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">bed</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">persion</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
                             <th class="text-secondary opacity-7"></th>
                         </tr>
@@ -51,11 +53,20 @@
                                 <p class="text-xs font-weight-bold mb-0">{{$room->category->name}}</p>
                             </td>
                             <td>
-                                <p class="text-xs font-weight-bold mb-0">{{str_limit($room->description,'30')}}</p>
-                            </td>
-                            <td>
                                 <img class="img-thumbnail" src="{{url('uploads/room/', $room->image)}}" alt="image" style="height: 70px; width:90px;">
                             </td>
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0">{{$room->bed}}</p>
+                            </td>
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0">{{$room->person}}</p>
+                            </td>
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0">{{$room->price}}</p>
+                            </td>
+
+
+
                             <td>
                                 <a href="{{ route('admin.room.edit',$room->id) }}" class="btn btn-info btn-sm">Edit</a>
 

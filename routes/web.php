@@ -4,9 +4,12 @@ use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/','HomeController@index')->name('home');
+Route::get('/room','HomeController@room')->name('room');
+Route::get('/restaurant','HomeController@restaurant')->name('restaurant');
+Route::get('/about','HomeController@about')->name('about');
+Route::get('/contact','HomeController@contact')->name('contact');
 
 Auth::routes();
 
