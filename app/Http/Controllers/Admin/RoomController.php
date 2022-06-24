@@ -60,6 +60,9 @@ class RoomController extends Controller
         $room->slug = str_slug($request->name);
         $room->category_id = $request->category;
         $room->description = $request->description;
+        $room->bed = $request->bed;
+        $room->person = $request->person;
+        $room->price = $request->price;
         $room->image = $imagename;
         $room->save();
         Toastr::success('success','Room added successfully');

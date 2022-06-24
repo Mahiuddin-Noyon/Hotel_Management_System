@@ -20,7 +20,7 @@
             <div class="input-group input-group-outline">
                 <input type="text" name="name" class="form-control">
             </div>
-            
+
             <label class="form-label  my-2">Description</label>
             <div class="input-group input-group-outline">
                 <textarea class="form-control" name="description"></textarea>
@@ -39,6 +39,31 @@
             <div class="input-group input-group-outline mb-3">
                 <input type="file" name="image" class="form-control">
             </div>
+
+            <label class="form-label my-2">Bed</label>
+            <div class="input-group input-group-outline mb-3">
+                <select name="person" class="form-control">
+                    <option value="single">Single</option>
+                    <option value="twin">Twin</option>
+                    <option value="quad">Quad</option>
+                </select>
+            </div>
+
+            <label class="form-label my-2">Person</label>
+            <div class="input-group input-group-outline mb-3">
+                <select name="person" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+
+            <label class="form-label my-2">Price</label>
+            <div class="input-group input-group-outline mb-3">
+                <input type="number" name="price" value="{{$room->price}}" class="form-control">
+            </div>
+
             <a href="{{ route('admin.room.index') }}" class="btn btn-danger">Back</a>
             <button type="submit" class="btn btn-primary">Save</button>
         </form>

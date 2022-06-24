@@ -39,6 +39,12 @@
             <div class="input-group input-group-outline mb-3">
                 <input type="file" name="image" class="form-control">
             </div>
+
+            <label class="form-label my-2">Price</label>
+            <div class="input-group input-group-outline mb-3">
+                <input type="text" name="price" class="form-control">
+            </div>
+
             <a href="{{ route('admin.facility.index') }}" class="btn btn-danger">Back</a>
             <button type="submit" class="btn btn-primary">Save</button>
         </form>

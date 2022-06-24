@@ -34,6 +34,28 @@
                     @endforeach
                 </select>
             </div>
+            <label class="form-label my-2 ">Bed</label>
+            <div class="input-group input-group-outline">
+                <select class="form-control" name="bed">
+                    <option value="single">Single</option>
+                    <option value="twin">Twin</option>
+                    <option value="quad">Quad</option>
+                </select>
+            </div>
+            <label class="form-label my-2 ">Person</label>
+            <div class="input-group input-group-outline">
+                <select class="form-control" name="person">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+
+            <label class="form-label  my-2">Price</label>
+            <div class="input-group input-group-outline">
+                <textarea class="form-control" name="price"> {{$room->price}} </textarea>
+            </div>
 
             <label class="form-label my-2">Room Image</label>
             <div class="input-group input-group-outline mb-3">
@@ -43,6 +65,7 @@
                 <small>Recent image: </small>
                 <img class="img-thumbnail img-responsive" src="{{url('uploads/category/'. $category->image)}}" alt="image" style="height: 70px; width:90px;">
             </div>
+
             <a href="{{ route('admin.room.index') }}" class="btn btn-danger">Cancel</a>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>

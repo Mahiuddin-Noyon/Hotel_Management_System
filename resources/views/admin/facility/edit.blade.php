@@ -35,6 +35,10 @@
                     @endforeach
                 </select>
             </div>
+            <label class="form-label my-2">Price</label>
+            <div class="input-group input-group-outline mb-3">
+                <input type="text" name="price" value="{{$facility->price}}" class="form-control">
+            </div>
 
             <label class="form-label my-2">Facility Image</label>
             <div class="input-group input-group-outline mb-3">

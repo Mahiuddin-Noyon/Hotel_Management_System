@@ -58,6 +58,7 @@ class FacilityController extends Controller
         $facility->name = $request->name;
         $facility->slug = str_slug($request->name);
         $facility->category_id = $request->category;
+        $facility->price = $request->price;
         $facility->description = $request->description;
         $facility->image = $imagename;
         $facility->save();
@@ -118,6 +119,7 @@ class FacilityController extends Controller
         $facility->name = $request->name;
         $facility->slug = str_slug($request->name);
         $facility->category_id = $request->category;
+        $facility->price = $request->price;
         $facility->description = $request->description;
         $facility->image = $imagename;
         $facility->update();
