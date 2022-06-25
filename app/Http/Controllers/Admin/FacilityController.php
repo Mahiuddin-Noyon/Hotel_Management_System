@@ -6,6 +6,7 @@ use App\Category;
 use App\Facilitiy;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
 
 class FacilityController extends Controller
@@ -40,6 +41,13 @@ class FacilityController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+
+            'name' => 'required|string',
+            'price' => 'required|numeric',
+            'image' => 'required',
+        ]);
+
         $image = $request->file('image');
         $slug = str_slug($request->name);
         if (isset($image)) {
@@ -62,7 +70,8 @@ class FacilityController extends Controller
         $facility->description = $request->description;
         $facility->image = $imagename;
         $facility->save();
-        return redirect()->route('admin.facility.index')->with('successMsg', 'Facility Added Successfully');
+        Toastr::success('success','Facility Added Successfully');
+        return redirect()->route('admin.facility.index');
     }
 
     /**
@@ -98,6 +107,12 @@ class FacilityController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            
+            'name' => 'required|string',
+            'price' => 'required|numeric',
+        ]);
+
         $facility = Facilitiy::find($id);
 
         $image = $request->file('image');
@@ -113,7 +128,7 @@ class FacilityController extends Controller
             }
             $image->move('uploads/facility', $imagename);
         } else {
-            $imagename = 'default.png';
+            $imagename = $facility->image;
         }
 
         $facility->name = $request->name;
@@ -123,7 +138,8 @@ class FacilityController extends Controller
         $facility->description = $request->description;
         $facility->image = $imagename;
         $facility->update();
-        return redirect()->route('admin.facility.index')->with('successMsg', 'Facility Updated Successfully');
+        Toastr::success('success','Facility Updated Successfully');
+        return redirect()->route('admin.facility.index');
     }
 
     /**
@@ -139,6 +155,7 @@ class FacilityController extends Controller
             unlink('uploads/facility/' . $facility->image);
         }
         $facility->delete();
-        return redirect()->back()->with('successMsg', 'Facility Deleted Successfully');
+        Toastr::success('success','Facility Deleted Successfully');
+        return redirect()->back();
     }
 }

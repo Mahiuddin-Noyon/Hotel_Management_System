@@ -10,6 +10,7 @@ Route::get('/room','HomeController@room')->name('room');
 Route::get('/restaurant','HomeController@restaurant')->name('restaurant');
 Route::get('/about','HomeController@about')->name('about');
 Route::get('/contact','HomeController@contact')->name('contact');
+Route::get('/room-details/{id}','HomeController@single')->name('single');
 
 Auth::routes();
 

@@ -62,7 +62,7 @@
                                 <p class="text-xs font-weight-bold mb-0">{{$room->person}}</p>
                             </td>
                             <td>
-                                <p class="text-xs font-weight-bold mb-0">{{$room->price}}</p>
+                                <p class="text-xs font-weight-bold mb-0">{{$room->price}}$</p>
                             </td>
 
 

@@ -55,7 +55,7 @@
                                 <p class="text-xs font-weight-bold mb-0">{{str_limit($facility->description,'30')}}</p>
                             </td>
                             <td>
-                                <p class="text-xs font-weight-bold mb-0">{{$facility->price}}</p>
+                                <p class="text-xs font-weight-bold mb-0">{{$facility->price}}$</p>
                             </td>
                             <td>
                                 <img class="img-thumbnail" src="{{url('uploads/facility/', $facility->image)}}" alt="image" style="height: 70px; width:90px;">

@@ -3,35 +3,18 @@
 @section('title','home')
 
 @section('content')
-<section class="home-slider owl-carousel">
-    <div class="slider-item" style="background-image:url({{asset('frontend/images/bg_1.jpg')}});">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row no-gutters slider-text align-items-center justify-content-center">
-                <div class="col-md-12 ftco-animate text-center">
-                    <div class="text mb-5 pb-3">
-                        <h1 class="mb-3">Welcome To Deluxe</h1>
-                        <h2>Hotels &amp; Resorts</h2>
-                    </div>
+<div class="hero-wrap" style="background-image: url({{asset('frontend/images/bg_1.jpg')}});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
+            <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
+                <div class="text">
+                    <h1 class="mb-4 bread">Hotel Management System</h1>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="slider-item" style="background-image:url(images/bg_2.jpg);">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row no-gutters slider-text align-items-center justify-content-center">
-                <div class="col-md-12 ftco-animate text-center">
-                    <div class="text mb-5 pb-3">
-                        <h1 class="mb-3">Enjoy A Luxury Experience</h1>
-                        <h2>Join With Us</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+</div>
 
 <section class="ftco-booking">
     <div class="container">
@@ -171,24 +154,23 @@
     <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
             <div class="col-md-7 heading-section text-center ftco-animate">
-                <h2 class="mb-4">Our Rooms</h2>
+                <h2 class="mb-4">Our Room Categories</h2>
             </div>
         </div>
         <div class="row">
-            @foreach($rooms as $room)
+            @foreach($categories as $category)
             <div class="col-sm col-md-6 col-lg-4 ftco-animate">
                 <div class="room">
-                    <a href="rooms.html" >
-                        <img src="{{asset('uploads/room/'. $room->image)}}" class="img d-flex justify-content-center align-items-center" alt="image">
+                    <a href="#">
+                        <img src="{{asset('uploads/category/'. $category->image)}}" class="img d-flex justify-content-center align-items-center" alt="image">
                         <div class="icon d-flex justify-content-center align-items-center">
                             <span class="icon-search2"></span>
                         </div>
                     </a>
                     <div class="text p-3 text-center">
-                        <h3 class="mb-3"><a href="rooms.html">{{$room->name}}</a></h3>
-                        <p><span class="price mr-2">${{$room->price}}</span> <span class="per">per night</span></p>
+                        <h3 class="mb-3"><a href="rooms.html">{{$category->name}}</a></h3>
                         <hr>
-                        <p class="pt-1"><a href="room-single.html" class="btn-custom">{{$room->description}} <span class="icon-long-arrow-right"></span></a></p>
+                        <p class="pt-1"><a href="#" class="btn-custom">View all <span class="icon-long-arrow-right"></span></a></p>
                     </div>
                 </div>
             </div>

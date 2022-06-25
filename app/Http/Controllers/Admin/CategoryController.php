@@ -39,6 +39,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+
+            'name' => 'required|string',
+            'image' => 'required|image',
+        ]);
+
         $image = $request->file('image');
         $slug = str_slug($request->name);
         if (isset($image)) {
@@ -57,7 +63,7 @@ class CategoryController extends Controller
         $category->slug = str_slug($request->name);
         $category->image = $imagename;
         $category->save();
-        Toastr::success('success','Category Added Successfully');
+        Toastr::success('success', 'Category Added Successfully');
         return redirect()->route('admin.category.index');
     }
 
@@ -93,6 +99,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+
+            'name' => 'required|string',
+            'image' => 'required',
+        ]);
+
         $category = Category::find($id);
 
         $image = $request->file('image');
@@ -103,7 +115,9 @@ class CategoryController extends Controller
             if (!file_exists('uploads/category')) {
                 mkdir('upload/category', 0777, true);
             }
-            unlink('uploads/category/' . $category->image);
+            if (file_exists('uploads/category/' . $category->image)) {
+                unlink('uploads/category/' . $category->image);
+            }
             $image->move('uploads/category', $imagename);
         } else {
             $imagename = $category->image;
@@ -113,7 +127,7 @@ class CategoryController extends Controller
         $category->slug = str_slug($request->name);
         $category->image = $imagename;
         $category->update();
-        Toastr::success('success','Category Updated Successfully');
+        Toastr::success('success', 'Category Updated Successfully');
         return redirect()->route('admin.category.index');
     }
 
@@ -132,7 +146,7 @@ class CategoryController extends Controller
             unlink('uploads/category/' . $category->image);
         }
         $category->delete();
-        Toastr::success('success','Category Deleted Successfully');
+        Toastr::success('success', 'Category Deleted Successfully');
         return redirect()->back();
     }
 }

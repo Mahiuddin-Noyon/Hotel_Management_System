@@ -117,7 +117,7 @@ class RoomController extends Controller
             }
             $image->move('uploads/room', $imagename);
         } else {
-            $imagename = 'default.png';
+            $imagename = $room->image;
         }
 
         $room->name = $request->name;
