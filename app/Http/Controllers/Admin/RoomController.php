@@ -41,6 +41,13 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'name'=>'required|string',
+            'bed'=>'required|string',
+            'price'=>'required|numeric',
+            'person'=>'required|numeric',
+            'image'=>'required',
+        ]);
         $image = $request->file('image');
         $slug = str_slug($request->name);
         if (isset($image)) {
@@ -102,6 +109,13 @@ class RoomController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'name'=>'required|string',
+            'bed'=>'required|string',
+            'price'=>'required|numeric',
+            'person'=>'required|numeric',
+        ]);
+
         $room = Room::find($id);
 
         $image = $request->file('image');
@@ -124,6 +138,9 @@ class RoomController extends Controller
         $room->slug = str_slug($request->name);
         $room->category_id = $request->category;
         $room->description = $request->description;
+        $room->bed = $request->bed;
+        $room->person = $request->person;
+        $room->price = $request->price;
         $room->image = $imagename;
         $room->update();
         Toastr::success('success','Room Updated Successfully');

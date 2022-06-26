@@ -19,7 +19,7 @@
                 <label class="form-label">Category Name</label>
                 <input type="text" name="name" class="form-control">
             </div>
-            <label class="form-label">Category Image</label>
+            <label class="form-label">Category Image</label> 
             <div class="input-group input-group-outline my-3">
                 <input type="file" name="image" class="form-control">
             </div>

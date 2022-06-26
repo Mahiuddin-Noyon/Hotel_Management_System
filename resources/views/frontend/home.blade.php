@@ -170,7 +170,7 @@
                     <div class="text p-3 text-center">
                         <h3 class="mb-3"><a href="rooms.html">{{$category->name}}</a></h3>
                         <hr>
-                        <p class="pt-1"><a href="#" class="btn-custom">View all <span class="icon-long-arrow-right"></span></a></p>
+                        <p class="pt-1"><a href="{{route('room')}}" class="btn-custom">View all <span class="icon-long-arrow-right"></span></a></p>
                     </div>
                 </div>
             </div>

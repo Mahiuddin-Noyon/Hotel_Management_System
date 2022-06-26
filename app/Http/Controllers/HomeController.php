@@ -27,7 +27,9 @@ class HomeController extends Controller
     public function single($id)
     {
         $room =  Room::find($id);
-        return view('frontend.single', compact('room'));
+        $randomrooms = Room::all()->random(3);
+        $categories = Category::all();
+        return view('frontend.single', compact('room','randomrooms','categories'));
     }
     public function about()
     {

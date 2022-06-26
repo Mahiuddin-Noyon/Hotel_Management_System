@@ -42,7 +42,7 @@
 
             <label class="form-label my-2">Bed</label>
             <div class="input-group input-group-outline mb-3">
-                <select name="person" class="form-control">
+                <select name="bed" class="form-control">
                     <option value="single">Single</option>
                     <option value="twin">Twin</option>
                     <option value="quad">Quad</option>
@@ -61,7 +61,7 @@
 
             <label class="form-label my-2">Price</label>
             <div class="input-group input-group-outline mb-3">
-                <input type="number" name="price" value="{{$room->price}}" class="form-control">
+                <input type="number" name="price" class="form-control">
             </div>
 
             <a href="{{ route('admin.room.index') }}" class="btn btn-danger">Back</a>

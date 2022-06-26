@@ -42,7 +42,7 @@ class CategoryController extends Controller
         $this->validate($request, [
 
             'name' => 'required|string',
-            'image' => 'required|image',
+            'image' => 'required',
         ]);
 
         $image = $request->file('image');
@@ -102,7 +102,6 @@ class CategoryController extends Controller
         $this->validate($request, [
 
             'name' => 'required|string',
-            'image' => 'required',
         ]);
 
         $category = Category::find($id);
