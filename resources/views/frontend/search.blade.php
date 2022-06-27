@@ -11,7 +11,7 @@
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
             <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
                 <div class="text">
-                    <h1 class="mb-4 bread"> {{$rooms->count()}} results for {{$search}}</h1>
+                    <h1 class="mb-4 bread"> {{$rooms->count()}} results for {{$search}} and {{$bed}}</h1>
                 </div>
             </div>
         </div>
@@ -37,9 +37,9 @@
                                 <h3 class="mb-3"><a href="{{route('single', $room->id)}}"> {{$room->name}} </a></h3>
                                 <p><span class="price mr-2">{{$room->price}}$</span> <span class="per">per night</span></p>
                                 <ul class="list">
-                                    <li><span>Max:</span>{{$room->person}}</li>
-                                    <li><span>Category:</span> {{$room->category->name}} </li>
-                                    <li><span>Bed:</span>{{$room->bed}}</li>
+                                    <li><span>Max: </span>{{$room->person}}</li>
+                                    <li><span>Category: </span>{{$room->category->name}} </li>
+                                    <li><span>Bed: </span>{{$room->bed}}</li>
                                 </ul>
                                 <hr>
                                 <p class="pt-1"><a href="#" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
@@ -51,7 +51,7 @@
                     <div class="col-md-12 text-center">
                         <div class="card">
                             <div class="card-body">
-                                <span class="">Sorry, No rooms are found for <strong>{{$search}}</strong>. Please try others.</span>
+                                <span class="">Sorry, No rooms are found for <strong>{{$search}} and {{$bed}} bed</strong>. Please try others.</span>
                             </div>
                         </div>
                     </div>

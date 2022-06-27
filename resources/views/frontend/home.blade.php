@@ -29,6 +29,17 @@
                             </div>
                         </div>
                         <div class="col-md d-flex">
+                            <div class="form-group p-4 align-self-stretch d-flex align-items-end">
+                                <div class="wrap">
+                                    <label for="#">Search Here</label>
+                                    <select class="form-control" name="bed" id="">
+                                        
+                                        <option value="single">single</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md d-flex">
                             <div class="form-group d-flex align-self-stretch">
                                 <input type="submit" value="Check Availability" class="btn btn-primary py-3 px-4 align-self-stretch">
                             </div>
