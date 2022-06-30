@@ -7,11 +7,23 @@
 
 		<div class="collapse navbar-collapse" id="ftco-nav">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active"><a href="{{route('home')}}" class="nav-link">Home</a></li>
+				<li class="nav-item"><a href="{{route('home')}}" class="nav-link">Home</a></li>
 				<li class="nav-item"><a href="{{route('room')}}" class="nav-link">Rooms</a></li>
 				<li class="nav-item"><a href="{{route('restaurant')}}" class="nav-link">Restaurant</a></li>
 				<li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
-				<li class="nav-item"><a href="#" class="nav-link">Login/Logout</a></li>
+
+				@guest
+				<li class="nav-item"><a href="{{route('login')}}" class="nav-link">Login</a></li>
+				@else
+
+				@if(Auth::user()->role->id == 1)
+				<li class="nav-item"><a href="{{route('admin.dashboard')}}" class="nav-link">Dashboard</a></li>
+				@endif
+				@if(Auth::user()->role->id == 2)
+				<li class="nav-item"><a href="{{route('client.dashboard')}}" class="nav-link">Dashboard</a></li>
+				@endif
+
+				@endguest
 			</ul>
 		</div>
 	</div>
