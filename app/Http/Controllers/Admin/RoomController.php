@@ -18,7 +18,7 @@ class RoomController extends Controller
      */
     public function index()
     {
-        $rooms = Room::paginate(5);
+        $rooms = Room::orderBy('id', 'DESC')->paginate(5);
         return view('admin.room.index', compact('rooms'));
     }
 

@@ -10,13 +10,13 @@ class SearchController extends Controller
     public function search(Request $request)
     {
         $this->validate($request,[
-            'search' => 'required',
+            'category' => 'required',
         ]);
         
-        $search = $request->input('search');
+        $category = $request->input('category');
         $bed = $request->input('bed');
-        $rooms = Room::where('name', 'LIKE', "%$search%")
+        $rooms = Room::where('name', 'LIKE', "%$category%")
         ->orwhere('bed', 'LIKE', "%$bed%")->get();
-        return view('frontend.search',compact('rooms','search','bed'));
+        return view('frontend.search',compact('rooms','category','bed'));
     }
 }

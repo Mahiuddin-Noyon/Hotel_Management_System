@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/','HomeController@index')->name('home');
 Route::get('/room','HomeController@room')->name('room');
 Route::get('/restaurant','HomeController@restaurant')->name('restaurant');
-Route::get('/about','HomeController@about')->name('about');
 Route::get('/contact','HomeController@contact')->name('contact');
-Route::get('/room-details/{id}','HomeController@single')->name('single');
+Route::get('/room/details/{id}','HomeController@single')->name('single');
 Route::get('/search','SearchController@search')->name('search');
+Route::get('/category/rooms/{slug}','HomeController@categoryrooms')->name('categoryrooms');
 
 Auth::routes();
 

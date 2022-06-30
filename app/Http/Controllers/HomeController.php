@@ -16,7 +16,7 @@ class HomeController extends Controller
     }
     public function room()
     {
-        $rooms = Room::all();
+        $rooms = Room::where('is_available',true)->latest()->get();
         return view('frontend.room',compact('rooms'));
     }
     public function restaurant()
@@ -31,10 +31,12 @@ class HomeController extends Controller
         $categories = Category::all();
         return view('frontend.single', compact('room','randomrooms','categories'));
     }
-    public function about()
+    public function categoryrooms($slug)
     {
-        //
+        $category = Category::where('slug', $slug)->first();
+        return view('frontend.categoryrooms', compact('category'));
     }
+    
     public function contact()
     {
         //

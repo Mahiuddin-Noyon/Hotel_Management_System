@@ -20,25 +20,51 @@
 
                 <form action="{{route('search')}}" method="get" class="booking-form">
                     <div class="row">
-                        <div class="col-md d-flex">
+
+                        <div class="col-md-3 d-flex">
                             <div class="form-group p-4 align-self-stretch d-flex align-items-end">
                                 <div class="wrap">
-                                    <label for="#">Search Here</label>
-                                    <input type="text" name="search" class="form-control" placeholder="type your search" required>
+                                    <label for="#">Check-in Date</label>
+                                    <input type="text" class="form-control checkin_date" placeholder="Check-in date">
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-3 d-flex">
+                            <div class="form-group p-4 align-self-stretch d-flex align-items-end">
+                                <div class="wrap">
+                                    <label for="#">Check-out Date</label>
+                                    <input type="text" class="form-control checkout_date" placeholder="Check-out date">
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-md d-flex">
                             <div class="form-group p-4 align-self-stretch d-flex align-items-end">
                                 <div class="wrap">
-                                    <label for="#">Search Here</label>
-                                    <select class="form-control" name="bed" id="">
-                                        
-                                        <option value="single">single</option>
+                                    <label for="#">Category</label>
+                                    <select class="form-control" name="category" id="">
+                                        @foreach($categories as $category)
+                                        <option value="{{$category->name}}">{{$category->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-md d-flex">
+                            <div class="form-group p-4 align-self-stretch d-flex align-items-end">
+                                <div class="wrap">
+                                    <label for="#">Room</label>
+                                    <select class="form-control" name="bed" id="">
+                                        <option value="single">single</option>
+                                        <option value="twin">twin</option>
+                                        <option value="triple">triple</option>
+                                        <option value="quad">quad</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-md d-flex">
                             <div class="form-group d-flex align-self-stretch">
                                 <input type="submit" value="Check Availability" class="btn btn-primary py-3 px-4 align-self-stretch">
@@ -124,16 +150,16 @@
             @foreach($categories as $category)
             <div class="col-sm col-md-6 col-lg-4 ftco-animate">
                 <div class="room">
-                    <a href="#">
+                    <a href="{{route('categoryrooms', $category->slug)}}">
                         <img src="{{asset('uploads/category/'. $category->image)}}" class="img d-flex justify-content-center align-items-center" alt="image">
                         <div class="icon d-flex justify-content-center align-items-center">
                             <span class="icon-search2"></span>
                         </div>
                     </a>
                     <div class="text p-3 text-center">
-                        <h3 class="mb-3"><a href="rooms.html">{{$category->name}}</a></h3>
+                        <h3 class="mb-3"><a href="{{route('categoryrooms', $category->slug)}}">{{$category->name}}</a></h3>
                         <hr>
-                        <p class="pt-1"><a href="{{route('room')}}" class="btn-custom">View all <span class="icon-long-arrow-right"></span></a></p>
+                        <p class="pt-1"><a href="{{route('categoryrooms', $category->slug)}}" class="btn-custom">View all <span class="icon-long-arrow-right"></span></a></p>
                     </div>
                 </div>
             </div>
