@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,6 +13,7 @@ Route::get('/contact','HomeController@contact')->name('contact');
 Route::get('/room/details/{id}','HomeController@single')->name('single');
 Route::get('/search','SearchController@search')->name('search');
 Route::get('/category/rooms/{slug}','HomeController@categoryrooms')->name('categoryrooms');
+Route::get('booking', 'BookingController@index')->name('booking');
 
 Auth::routes();
 

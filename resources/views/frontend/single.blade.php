@@ -31,7 +31,7 @@
                     </div>
                     <div class="col-md-12 room-single mt-4 mb-5 ftco-animate">
                         <p>{{$room->description}}</p>
-                        <div class="d-md-flex mt-5 mb-5">
+                        <div class="d-md-flex mt-5 mb-2">
                             <ul class="list">
                                 <li><span>Max: </span>{{$room->person}} Person</li>
                                 <li><span>Category: </span>{{$room->category->name}}</li>
@@ -41,6 +41,7 @@
                                 <li><span>Price: </span>{{$room->price}}$ per night</li>
                             </ul>
                         </div>
+                        <a href=" {{route('booking')}} " class="btn btn-success btn-block">Book now</a>
                     </div>
 
                 </div>
