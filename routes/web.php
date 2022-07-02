@@ -15,6 +15,9 @@ Route::get('/search','SearchController@search')->name('search');
 Route::get('/category/rooms/{slug}','HomeController@categoryrooms')->name('categoryrooms');
 Route::get('/booking/{id}', 'BookingController@index')->name('booking');
 
+Route::get('/storeseassion', 'BookingController@store')->name('storeseassion');
+Route::get('/show', 'BookingController@show')->name('show');
+
 Auth::routes();
 
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function () {

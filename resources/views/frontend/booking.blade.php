@@ -22,15 +22,18 @@
         <div class="col-lg-12">
             <div class="sidebar-wrap bg-light ftco-animate">
                 <h3 class="heading mb-4">Advanced Search</h3>
-                <form action="#">
+
+
+                <form action="{{route('storeseassion')}}" method="GET">
                     <div class="fields col-md-12">
                         <div class="col-md-12">
+
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <input type="text" name="checkin_date" id="checkin_date" class="form-control checkin_date" placeholder="Check In Date" required>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="checkout_date" id="checkout_date" class="form-control checkout_date" onchange="calculate()" placeholder="Check Out Date"required>
+                                    <input type="text" name="checkout_date" id="checkout_date" class="form-control checkout_date" onchange="calculate()" placeholder="Check Out Date" required>
                                 </div>
                             </div>
 
@@ -43,7 +46,7 @@
 
                             <div class="form-group">
                                 <div class="select-wrap one-third">
-                                <small for="">Total adults:</small>
+                                    <small for="">Total adults:</small>
                                     <input type="text" name="person" value="{{$room->person}}" class="form-control" readonly>
                                 </div>
                             </div>
@@ -51,10 +54,13 @@
                             <div class="form-group">
                                 <input type="submit" value="go to payment" class="btn btn-success btn-block py-3 px-5">
                             </div>
+
                         </div>
                     </div>
 
                 </form>
+
+
             </div>
 
             <script>
@@ -70,11 +76,10 @@
                     var total_time = result2.getTime() - result1.getTime();
 
                     var total_day_count = total_time / (1000 * 3600 * 24);
-                    if(total_day_count == 0)
-                    {
+                    if (total_day_count <= 0) {
                         total_day_count = 1;
                     }
-                    document.getElementById("result").value = total_day_count*{{$room->price}};
+                    document.getElementById("result").value = total_day_count * {{ $room -> price}}
                 }
             </script>
 

@@ -85,7 +85,7 @@
                                     <li><span>Bed:</span>{{$randomroom->bed}}</li>
                                 </ul>
                                 <hr>
-                                <p class="pt-1"><a href="#" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
+                                <p class="pt-1"><a href="{{route('booking', $room->id)}}" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
                             </div>
                         </div>
                     </div>
@@ -95,5 +95,4 @@
             </div>
         </div>
 </section> <!-- .section -->
-{!! Toastr::message() !!}
 @endsection
