@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Room;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -11,9 +12,10 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        return view('frontend.booking');
+        $room = Room::find($id);
+        return view('frontend.booking', compact('room'));
     }
 
     /**
@@ -68,7 +70,7 @@ class BookingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

@@ -9,7 +9,7 @@
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
             <div class="col-md-9 ftco-animate text-center d-flex align-items-end justify-content-center">
                 <div class="text">
-                    <p class="breadcrumbs mb-2" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{{route('home')}}">Home</a></span> <span class="mr-2"><a href="{{route('room')}}">Room</a></span><span>Room Single</span></p>
+                    <p class="breadcrumbs mb-2" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{{route('home')}}">Home</a></span> <span class="mr-2"><a href="{{route('room')}}">Room</a></span></p>
                     <h1 class="mb-4 bread">{{$room->name}}</h1>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                                 <li><span>Price: </span>{{$room->price}}$ per night</li>
                             </ul>
                         </div>
-                        <a href=" {{route('booking')}} " class="btn btn-success btn-block">Book now</a>
+                        <a href=" {{route('booking', $room->id)}} " class="btn btn-success btn-block">Book now</a>
                     </div>
 
                 </div>

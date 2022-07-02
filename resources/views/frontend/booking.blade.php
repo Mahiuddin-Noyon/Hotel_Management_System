@@ -3,7 +3,7 @@
 @section('title','booking')
 
 @section('content')
-<div class="hero-wrap" style="background-image: url({{asset('frontend/images/bg_1.jpg')}});">
+<div class="hero-wrap" style="background-image: url({{asset('uploads/room/'. $room->image)}});">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text d-flex align-itemd-end justify-content-center">
@@ -24,24 +24,34 @@
                 <h3 class="heading mb-4">Advanced Search</h3>
                 <form action="#">
                     <div class="fields col-md-12">
-                        <div class="row">
-                            <div class="form-group col-md-6">
-                                <input type="text" id="checkin_date" class="form-control checkin_date" placeholder="Check In Date">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <input type="text" name="checkin_date" id="checkin_date" class="form-control checkin_date" placeholder="Check In Date" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <input type="text" name="checkout_date" id="checkout_date" class="form-control checkout_date" onchange="calculate()" placeholder="Check Out Date"required>
+                                </div>
                             </div>
-                            <div class="form-group col-md-6">
-                                <input type="text" id="checkout_date" class="form-control checkout_date" onchange="calculate()" placeholder="Check Out Date">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="select-wrap one-third form-control">
-                                <p id="result">Total Days: 1</p>
-                            </div>
-                        </div>
 
-                        <div class="form-group">
-                            <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
+                            <div class="form-group">
+                                <div class="select-wrap one-third">
+                                    <input type="text" name="price" value="" id="result" placeholder="Total Price" class="form-control" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="select-wrap one-third form-control">
+                                    <label for="">Total Adult: {{$room->person}} </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="go to payment" class="btn btn-primary py-3 px-5">
+                            </div>
                         </div>
                     </div>
+
                 </form>
             </div>
 
@@ -58,9 +68,10 @@
                     var total_time = result2.getTime() - result1.getTime();
 
                     var total_day_count = total_time / (1000 * 3600 * 24);
-                    document.getElementById("result").innerHTML = "Total Days: "+ total_day_count;
+                    document.getElementById("result").value = total_day_count*{{$room->price}};
                 }
             </script>
+
 
 </section>
 </div>
