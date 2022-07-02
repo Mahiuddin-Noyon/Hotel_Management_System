@@ -36,18 +36,20 @@
 
                             <div class="form-group">
                                 <div class="select-wrap one-third">
-                                    <input type="text" name="price" value="" id="result" placeholder="Total Price" class="form-control" readonly>
+                                    <small for="">Total price in USD:</small>
+                                    <input type="text" name="price" value="" id="result" placeholder="{{$room->price}}" class="form-control" readonly>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <div class="select-wrap one-third form-control">
-                                    <label for="">Total Adult: {{$room->person}} </label>
+                                <div class="select-wrap one-third">
+                                <small for="">Total adults:</small>
+                                    <input type="text" name="person" value="{{$room->person}}" class="form-control" readonly>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <input type="submit" value="go to payment" class="btn btn-primary py-3 px-5">
+                                <input type="submit" value="go to payment" class="btn btn-success btn-block py-3 px-5">
                             </div>
                         </div>
                     </div>
