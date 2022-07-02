@@ -70,6 +70,10 @@
                     var total_time = result2.getTime() - result1.getTime();
 
                     var total_day_count = total_time / (1000 * 3600 * 24);
+                    if(total_day_count == 0)
+                    {
+                        total_day_count = 1;
+                    }
                     document.getElementById("result").value = total_day_count*{{$room->price}};
                 }
             </script>

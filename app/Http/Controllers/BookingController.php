@@ -18,8 +18,8 @@ class BookingController extends Controller
     {
         if(!Auth::user())
         {
+            Toastr::warning('Please login before booking','Login');
             return redirect()->back();
-            Toastr::danger('Please login before reservation','Info');
         }
         $room = Room::find($id);
         return view('frontend.booking', compact('room'));

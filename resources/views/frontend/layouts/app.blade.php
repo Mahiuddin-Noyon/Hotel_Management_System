@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="{{asset('frontend/css/flaticon.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/icomoon.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
+  <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 </head>
 
 @include('frontend.layouts.partial.topbar')
@@ -64,7 +65,9 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="{{asset('frontend/js/google-map.js')}}"></script>
   <script src="{{asset('frontend/js/main.js')}}"></script>
+  <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 
+  {!! Toastr::message() !!}
 </body>
 
 </html>

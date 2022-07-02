@@ -3,11 +3,6 @@
 @section('title','room-details')
 
 @section('content')
-
-@if(Session::has('message'))
-<p class="alert alert-info">{{ Session::get('message') }}</p>
-@endif
-
 <div class="hero-wrap" style="background-image: url({{asset('uploads/room/'. $room->image)}});">
     <div class="overlay"></div>
     <div class="container">
@@ -100,5 +95,5 @@
             </div>
         </div>
 </section> <!-- .section -->
-
+{!! Toastr::message() !!}
 @endsection
