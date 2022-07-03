@@ -24,10 +24,15 @@
                 <h3 class="heading mb-4">Advanced Search</h3>
 
 
-                <form action="{{route('storeseassion')}}" method="GET">
+                <form action="{{route('store')}}" method="POST">
+                    @csrf
                     <div class="fields col-md-12">
                         <div class="col-md-12">
-
+                            <div class="form-group">
+                                <div class="select-wrap one-third">
+                                    <input type="hidden" name="room_id" value="{{$room->id}}" id="result"class="form-control" readonly>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <input type="text" name="checkin_date" id="checkin_date" class="form-control checkin_date" placeholder="Check In Date" required>
@@ -52,7 +57,7 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="submit" value="go to payment" class="btn btn-success btn-block py-3 px-5">
+                            <a href="{{route('payment')}}" class="btn btn-success btn-block">Go to Payment</a>
                             </div>
 
                         </div>

@@ -14,7 +14,7 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index( Request $request, $id)
     {
         // if(!Auth::user())
         // {
@@ -23,6 +23,9 @@ class BookingController extends Controller
         // }
         $room = Room::find($id);
         return view('frontend.booking', compact('room'));
+
+        $data = $request->all();
+        $request->session()->put('storedata', $data);
     }
 
     /**
@@ -30,9 +33,10 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function payment(Request $request)
     {
-        //
+        
+
     }
 
     /**
@@ -52,9 +56,10 @@ class BookingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        //return $request->session()->all();
+        //return $request->session()->flush();
     }
 
     /**
