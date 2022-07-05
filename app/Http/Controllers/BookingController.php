@@ -14,7 +14,7 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index( Request $request, $id)
+    public function index(Request $request, $id)
     {
         // if(!Auth::user())
         // {
@@ -36,7 +36,13 @@ class BookingController extends Controller
     public function payment(Request $request)
     {
         
+        return $request->session()->get('store');
+        return view('frontend.payment');
+    }
 
+    public function after_payment()
+    {
+        echo 'Payment Received, Thanks you for using our services.';
     }
 
     /**
@@ -82,7 +88,6 @@ class BookingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
     }
 
     /**
