@@ -52,8 +52,8 @@ class BookingController extends Controller
         }
         
         $booking = new Booking();
-        $booking->room_id = 1;
-        $booking->room_id = $booking->room->id;
+        $booking->user_id = Auth::user()->id;
+        $booking->user_id = $booking->room->id;
         $booking->checkin_date = $request->checkin_date;
         $booking->checkout_date = $request->checkout_date;
         $booking->total_person = $request->person;

@@ -10,5 +10,9 @@ class Room extends Model
     {
         return $this->belongsTo('App\Category');
     }
+    public function booking()
+    {
+        return $this->belongsTo('App\Booking');
+    }
 
 }
