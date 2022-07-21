@@ -24,23 +24,23 @@
                 <h3 class="heading mb-4">Advanced Search</h3>
 
 
-                <form action="{{route('payment')}}" method="post">
+                <form action="{{route('store')}}" method="post">
                     @csrf
                     <div class="fields col-md-12">
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="checkin_date" id="checkin_date" class="form-control checkin_date" placeholder="Check In Date" required>
+                                    <input type="date" name="checkin_date" class="form-control " placeholder="Check In Date" required>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="text" name="checkout_date" id="checkout_date" class="form-control checkout_date" onchange="calculate()" placeholder="Check Out Date" required>
+                                    <input type="date" name="checkout_date" class="form-control " placeholder="Check Out Date" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="select-wrap one-third">
-                                    <small for="">Total price in USD:</small>
-                                    <input type="text" name="price" value="" id="result" placeholder="{{$room->price}}" class="form-control" readonly>
+                                    <small for="">Total price per night in USD:</small>
+                                    <input type="text" name="price" value="{{$room->price}}" class="form-control" readonly>
                                 </div>
                             </div>
 
@@ -49,10 +49,10 @@
                                     <small for="">Total adults:</small>
                                     <input type="text" name="person" value="{{$room->person}}" class="form-control" readonly>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                            <a href="{{route('payment')}}" class="btn btn-success btn-block">Go to Payment</a>
+                                <div class="card-footer">
+                                    <button id="card-button" class="btn btn-success btn-block" type="submit"> Confirm </button>
+                                </div>
                             </div>
 
                         </div>
@@ -60,28 +60,9 @@
 
                 </form>
 
-
             </div>
 
-            <script>
-                function calculate() {
-                    var date1 = document.getElementById("checkin_date").value;
-                    var result1 = new Date(date1);
-                    console.log("result1");
-                    var date2 = document.getElementById("checkout_date").value;
-                    var result2 = new Date(date2);
-                    console.log("result2");
 
-
-                    var total_time = result2.getTime() - result1.getTime();
-
-                    var total_day_count = total_time / (1000 * 3600 * 24);
-                    if (total_day_count <= 0) {
-                        total_day_count = 1;
-                    }
-                    document.getElementById("result").value = total_day_count * {{ $room -> price}}
-                }
-            </script>
 
 
 </section>

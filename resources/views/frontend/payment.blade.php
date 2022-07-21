@@ -19,7 +19,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="">
-                    <p>Your total Amount is {{session('price')}} USD</p>
+                    <p>Your total Amount is 100 USD</p>
                 </div>
                 <div class="card">
                     <form action="{{route('store')}}" method="post" id="payment-form">
@@ -40,7 +40,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button id="card-button" class="btn btn-dark" type="submit" data-secret="{{ $intent }}"> Pay </button>
+                            <button id="card-button" class="btn btn-dark" type="submit" data-secret="{{ $intent }}"> Confirm </button>
                         </div>
                     </form>
                 </div>

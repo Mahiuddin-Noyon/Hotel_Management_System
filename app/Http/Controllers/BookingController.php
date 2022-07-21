@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Booking;
 use App\Room;
 use Brian2694\Toastr\Facades\Toastr;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,22 +26,6 @@ class BookingController extends Controller
 
         $room = Room::find($id);
         return view('frontend.booking', compact('room'));
-
-        $data = $request->all();
-        $request->session()->put('storedata', $data);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function payment(Request $request)
-    {
-        
-        return $request->session()->get('store');
-        return view('frontend.payment');
-        
     }
 
     public function after_payment()
@@ -55,6 +41,25 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $checkin_date = Carbon::parse($request->input('checkin_date'));
+        $checkout_date = Carbon::parse($request->input('checkout_date'));
+        $price = $request->price;
+        $result = $checkin_date->diffInDays($checkout_date, false);
+        
+        if( $result>0)
+        {
+            $total_price = $price*$result;
+        }
+        
+        $booking = new Booking();
+        $booking->room_id = 1;
+        $booking->room_id = $booking->room->id;
+        $booking->checkin_date = $request->checkin_date;
+        $booking->checkout_date = $request->checkout_date;
+        $booking->total_person = $request->person;
+        $booking->price = $total_price;
+        $booking->save();
+        Toastr::success('Success','Data Stored Succesfully');
+        return redirect()->route('home');
     }
 }
