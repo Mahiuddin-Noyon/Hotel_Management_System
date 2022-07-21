@@ -119,7 +119,7 @@ class CategoryController extends Controller
             }
             $image->move('uploads/category', $imagename);
         } else {
-            $imagename = $category->image;
+            $imagename = $category->image; 
         }
 
         $category->name = $request->name;
