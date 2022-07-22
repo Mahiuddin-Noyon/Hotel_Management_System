@@ -16,7 +16,7 @@ Route::get('/category/rooms/{slug}','HomeController@categoryrooms')->name('categ
 Route::get('/booking/{id}', 'BookingController@index')->name('booking');
 
 Route::get('/payment', 'BookingController@payment')->name('payment');
-Route::post('/store', 'BookingController@store')->name('store');
+Route::post('/store/{id}', 'BookingController@store')->name('store');
 Route::get('/show', 'BookingController@show')->name('show');
 
 Auth::routes();
