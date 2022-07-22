@@ -24,7 +24,8 @@ class BookingController extends Controller
         //     return redirect()->back();
         // }
 
-        \Stripe\Stripe::setApiKey('sk_test_51KxyHYIEYo0gWEDaERO4zFkkgWyNl5cqAJDvjc5YBvZMDcZsf8Mm24RWJtUe4nI5ZFIsRGWuEnGtr1gM0xHopCy300Ge4zz7H0');
+
+     \Stripe\Stripe::setApiKey('sk_test_51KxyHYIEYo0gWEDaERO4zFkkgWyNl5cqAJDvjc5YBvZMDcZsf8Mm24RWJtUe4nI5ZFIsRGWuEnGtr1gM0xHopCy300Ge4zz7H0');
 
 
         $amount = 100;
@@ -34,7 +35,7 @@ class BookingController extends Controller
             'description' => 'Stripe Test Payment',
             'amount' => $amount,
             'currency' => 'USD',
-            'description' => 'Payment From All About Laravel',
+            'description' => 'Payment From Customer',
             'payment_method_types' => ['card'],
         ]);
 
