@@ -81,7 +81,7 @@
             @if( Request::is('client*'))
             <li class="nav-item">
                 <a class="nav-link text-white {{ Request::is('client/dashboard*') ? 'active bg-gradient-primary': '' }}"
-            href="{{route('admin.dashboard')}}">
+            href="{{route('client.dashboard')}}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">dashboard</i>
                     </div>
@@ -90,8 +90,8 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('client/roomtype*') ? 'active bg-gradient-primary': '' }}"
-                href="">
+                <a class="nav-link text-white {{ Request::is('client/reservations*') ? 'active bg-gradient-primary': '' }}"
+                href="{{route('client.reservations')}}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">category</i>
                     </div>

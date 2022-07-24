@@ -8,7 +8,6 @@
 @section('content')
 <div class="col-12">
     @include('layouts.partial.msg')
-    <a href="{{route('admin.room.create')}}" class="btn btn-primary">Add New</a>
     <div class="card my-4">
         <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
             <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
@@ -33,7 +32,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($reservations as $key=>$reservations)
+                        @foreach($reservations as $key=>$reservation)
                         <tr>
                             <td>
                                 <div class="d-flex px-2 py-1">
@@ -68,9 +67,9 @@
 
 
                             <td>
-                                <a href="{{ route('admin.reservation.edit',$reservation->id) }}" class="btn btn-info btn-sm">Edit</a>
+                                <a href="" class="btn btn-info btn-sm">Edit</a>
 
-                                <form id="delete-form-{{ $reservation->id }}" action="{{ route('admin.room.destroy',$reservation->id) }}" style="display: none;" method="POST">
+                                <form id="delete-form-{{ $reservation->id }}" action="" style="display: none;" method="POST">
                                     @csrf
                                     @method('DELETE')
                                 </form>
@@ -85,7 +84,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $rooms->links() }}
+                {{ $reservations->links() }}
             </div>
         </div>
     </div>
