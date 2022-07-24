@@ -63,13 +63,6 @@ class BookingController extends Controller
             $total_price = $price * $result;
         }
 
-        $room = Room::find($id);
-        return $room;
-        if($room->is_available == true)
-        {
-            $room->is_available == false;
-        }
-
         $booking = new Booking();
         $booking->user_id = Auth::user()->id;
         $booking->room_id = $id;
@@ -78,6 +71,14 @@ class BookingController extends Controller
         $booking->total_person = $request->person;
         $booking->price = $total_price;
         $booking->save();
+
+        $room = Room::find($id);
+        if($room->is_available == true)
+        {
+            $room->is_available = false;
+        }
+        $room->save();
+
         Toastr::success('Success', 'Data Stored Succesfully');
         return redirect()->route('home');
     }
