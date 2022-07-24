@@ -63,7 +63,12 @@ class BookingController extends Controller
             $total_price = $price * $result;
         }
 
-
+        $room = Room::find($id);
+        return $room;
+        if($room->is_available == true)
+        {
+            $room->is_available == false;
+        }
 
         $booking = new Booking();
         $booking->user_id = Auth::user()->id;
