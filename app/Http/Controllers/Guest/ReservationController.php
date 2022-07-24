@@ -14,4 +14,10 @@ class ReservationController extends Controller
         $reservations = Booking::orderBy('id', 'DESC')->paginate(5);
         return view('client.reservation.index', compact('reservations'));
     }
+
+
+    public function destroy($id)
+    {
+       $destroy = Booking::find($id);
+    }
 }

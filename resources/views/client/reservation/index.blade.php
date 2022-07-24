@@ -69,7 +69,7 @@
                             <td>
                                 <a href="" class="btn btn-info btn-sm">Edit</a>
 
-                                <form id="delete-form-{{ $reservation->id }}" action="" style="display: none;" method="POST">
+                                <form id="delete-form-{{ $reservation->id }}" action="{{route('client.reservations.destroy', $reservation->id)}}" style="display: none;" method="POST">
                                     @csrf
                                     @method('DELETE')
                                 </form>

@@ -31,4 +31,5 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'mi
 Route::group(['as' => 'client.', 'prefix' => 'client', 'namespace' => 'Guest', 'middleware' => ['auth', 'client']], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     Route::get('/reservations', 'ReservationController@index')->name('reservations');
+    Route::delete('/reservations/{$id}', 'ReservationController@destroy')->name('reservations.destroy');
 });
