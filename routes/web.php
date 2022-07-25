@@ -27,11 +27,18 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'mi
     Route::resource('category','CategoryController');
     Route::resource('facility','FacilityController');
     Route::resource('room','RoomController');
+    Route::get('/reservations', 'ReservationController@index')->name('reservations');
+    Route::get('/reservation/{id}/show', 'ReservationController@show')->name('reservation.show');
+
+    Route::get('/reservation/{id}/update', 'ReservationController@update')->name('reservation.update');
+    Route::post('/reservation/{id}/destroy', 'ReservationController@destroy')->name('reservation.destroy');
 });
 
 Route::group(['as' => 'client.', 'prefix' => 'client', 'namespace' => 'Guest', 'middleware' => ['auth', 'client']], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
     Route::get('/reservations', 'ReservationController@index')->name('reservations');
-    Route::post('/reservation/{$id}', 'ReservationController@destroy')->name('reservation.destroy');
+    Route::get('/reservation/{id}/edit', 'ReservationController@edit')->name('reservation.edit');
+    Route::post('/reservation/{id}/updaterequest', 'ReservationController@updaterequest')->name('reservation.updaterequest');
+    Route::delete('/reservation/{id}/delete', 'ReservationController@destroy')->name('reservation.destroy');
 });

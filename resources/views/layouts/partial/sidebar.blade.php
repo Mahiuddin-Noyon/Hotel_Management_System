@@ -52,8 +52,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('admin/notification*') ? 'active bg-gradient-primary': '' }} "
-                href="">
+                <a class="nav-link text-white {{ Request::is('admin/reservation*') ? 'active bg-gradient-primary': '' }} "
+                href="{{route('admin.reservations')}}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">notifications</i>
                     </div>
@@ -90,7 +90,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('client/reservations*') ? 'active bg-gradient-primary': '' }}"
+                <a class="nav-link text-white {{ Request::is('client/reservation*') ? 'active bg-gradient-primary': '' }}"
                 href="{{route('client.reservations')}}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">category</i>
@@ -100,12 +100,12 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('client/facilities*') ? 'active bg-gradient-primary': '' }} "
+                <a class="nav-link text-white {{ Request::is('client/notifications*') ? 'active bg-gradient-primary': '' }} "
                 href="">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">restaurant</i>
+                        <i class="material-icons opacity-10">notifications</i>
                     </div>
-                    <span class="nav-link-text ms-1">Facilities</span>
+                    <span class="nav-link-text ms-1">Notifications</span>
                 </a>
             </li>
             
