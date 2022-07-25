@@ -18,11 +18,11 @@ class BookingController extends Controller
      */
     public function index(Request $request, $id)
     {
-        // if(!Auth::user())
-        // {
-        //     Toastr::warning('Please login before booking','Login First');
-        //     return redirect()->back();
-        // }
+        if(!Auth::user())
+        {
+            Toastr::warning('Please login before booking','Login First');
+            return redirect()->route('login');
+        }
 
 
      \Stripe\Stripe::setApiKey('sk_test_51KxyHYIEYo0gWEDaERO4zFkkgWyNl5cqAJDvjc5YBvZMDcZsf8Mm24RWJtUe4nI5ZFIsRGWuEnGtr1gM0xHopCy300Ge4zz7H0');
@@ -79,7 +79,7 @@ class BookingController extends Controller
         }
         $room->save();
 
-        Toastr::success('Success', 'Data Stored Succesfully');
-        return redirect()->route('home');
+        Toastr::success('Room confirmed succesfully','Success');
+        return redirect()->route('room');
     }
 }

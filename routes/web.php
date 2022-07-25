@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Guest\ReservationController;
 use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -30,6 +31,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'mi
 
 Route::group(['as' => 'client.', 'prefix' => 'client', 'namespace' => 'Guest', 'middleware' => ['auth', 'client']], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
     Route::get('/reservations', 'ReservationController@index')->name('reservations');
-    Route::delete('/reservations/{$id}', 'ReservationController@destroy')->name('reservations.destroy');
+    Route::post('/reservation/{$id}', 'ReservationController@destroy')->name('reservation.destroy');
 });

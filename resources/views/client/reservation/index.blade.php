@@ -68,23 +68,13 @@
 
                             <td>
                                 <a href="" class="btn btn-info btn-sm">Edit</a>
-
-                                <form id="delete-form-{{ $reservation->id }}" action="{{route('client.reservations.destroy', $reservation->id)}}" style="display: none;" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
-                                <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('Are you sure? You want to delete this?')){
-                                                    event.preventDefault();
-                                                    document.getElementById('delete-form-{{ $reservation->id }}').submit();
-                                                }else {
-                                                    event.preventDefault();
-                                                        }">Delete</button>
+                                <a href="{{route('client.reservation.destroy', $reservation->id)}}" class="btn btn-danger btn-sm">Del</a>
+                                
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-                {{ $reservations->links() }}
             </div>
         </div>
     </div>
