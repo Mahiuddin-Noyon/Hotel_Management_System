@@ -49,7 +49,10 @@
         <div class="row block-9">
             <div class="col-md-6 order-md-last d-flex">
 
-                <form action="{{route('contact.store')}}" class="bg-white p-5 contact-form">
+                <form action="{{route('contact.store')}}" method="post" class="bg-white p-5 contact-form">
+                    @csrf
+                    @method('POST')
+
                     <div class="form-group">
                         <input type="text" name="name" class="form-control" placeholder="Your Name">
                     </div>
@@ -65,6 +68,7 @@
                     <div class="form-group">
                         <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
                     </div>
+
                 </form>
 
             </div>
