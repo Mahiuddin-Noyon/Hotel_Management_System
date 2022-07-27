@@ -37,8 +37,4 @@ class HomeController extends Controller
         return view('frontend.categoryrooms', compact('category'));
     }
     
-    public function contact()
-    {
-        //
-    }
 }
