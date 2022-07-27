@@ -32,7 +32,7 @@
             </div>
 
             <div class="mt-3">
-                <a href="{{ route('admin.reservations') }}" class="btn btn-danger">Cancel</a>
+                <a href="{{ route('client.reservations') }}" class="btn btn-danger">Cancel</a>
                 <button type="submit" class="btn btn-primary">Confirm</button>
             </div>
         </form>
