@@ -14,8 +14,7 @@
             @if( Request::is('admin*'))
 
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('admin/dashboard*') ? 'active bg-gradient-primary': '' }}"
-                href="{{route('admin.dashboard')}}">
+                <a class="nav-link text-white {{ Request::is('admin/dashboard*') ? 'active bg-gradient-primary': '' }}" href="{{route('admin.dashboard')}}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">dashboard</i>
                     </div>
@@ -24,8 +23,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('admin/category*') ? 'active bg-gradient-primary': '' }}"
-                href="{{route('admin.category.index')}}">
+                <a class="nav-link text-white {{ Request::is('admin/category*') ? 'active bg-gradient-primary': '' }}" href="{{route('admin.category.index')}}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">category</i>
                     </div>
@@ -33,8 +31,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('admin/room*') ? 'active bg-gradient-primary': '' }}"
-                href="{{route('admin.room.index')}}">
+                <a class="nav-link text-white {{ Request::is('admin/room*') ? 'active bg-gradient-primary': '' }}" href="{{route('admin.room.index')}}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">category</i>
                     </div>
@@ -43,8 +40,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('admin/facility*') ? 'active bg-gradient-primary': '' }} "
-                href=" {{ route('admin.facility.index') }} ">
+                <a class="nav-link text-white {{ Request::is('admin/facility*') ? 'active bg-gradient-primary': '' }} " href=" {{ route('admin.facility.index') }} ">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">restaurant</i>
                     </div>
@@ -52,8 +48,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('admin/contact*') ? 'active bg-gradient-primary': '' }} "
-                href="{{route('admin.contact')}}">
+                <a class="nav-link text-white {{ Request::is('admin/contact*') ? 'active bg-gradient-primary': '' }} " href="{{route('admin.contact')}}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">email</i>
                     </div>
@@ -80,8 +75,7 @@
 
             @if( Request::is('client*'))
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('client/dashboard*') ? 'active bg-gradient-primary': '' }}"
-            href="{{route('client.dashboard')}}">
+                <a class="nav-link text-white {{ Request::is('client/dashboard*') ? 'active bg-gradient-primary': '' }}" href="{{route('client.dashboard')}}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">dashboard</i>
                     </div>
@@ -90,8 +84,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('client/reservation*') ? 'active bg-gradient-primary': '' }}"
-                href="{{route('client.reservations')}}">
+                <a class="nav-link text-white {{ Request::is('client/reservation*') ? 'active bg-gradient-primary': '' }}" href="{{route('client.reservations')}}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">category</i>
                     </div>
@@ -100,15 +93,14 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link text-white {{ Request::is('client/notifications*') ? 'active bg-gradient-primary': '' }} "
-                href="">
+                <a class="nav-link text-white {{ Request::is('client/notifications*') ? 'active bg-gradient-primary': '' }} " href="">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">notifications</i>
                     </div>
                     <span class="nav-link-text ms-1">Notifications</span>
                 </a>
             </li>
-            
+
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
             </li>
@@ -132,7 +124,7 @@
     </div>
     <div class="sidenav-footer position-absolute w-100 ">
         <div class="mx-3">
-         
+
         </div>
     </div>
 </aside>

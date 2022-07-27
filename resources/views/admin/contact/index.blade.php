@@ -25,6 +25,7 @@
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Subject</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Sent at</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
                             <th class="text-secondary opacity-7"></th>
                         </tr>
@@ -32,6 +33,7 @@
                     <tbody>
                         @foreach($contacts as $key=>$contact)
                         <tr>
+
                             <td>
                                 <div class="d-flex px-2 py-1">
                                     <div class="d-flex flex-column justify-content-center">
@@ -56,13 +58,19 @@
                                 <p class="text-xs font-weight-bold mb-0">{{$contact->created_at}}</p>
                             </td>
                             <td>
-                                <a href="{{ route('admin.contact.show', $contact->id) }}" class="btn btn-info btn-sm">Show</a>
-
+                                @if($contact->status == 0)
+                                <span class="badge badge-sm bg-gradient-danger">Unread</span>
+                                @else
+                                <span class="badge badge-sm bg-gradient-success">Read</span>
+                                @endif
+                            </td>
+                            <td>
+                                <a href="{{ route('admin.contact.show', $contact->id) }}" class="btn btn-info btn-sm mt-3">Show</a>
                                 <form id="delete-form-{{ $contact->id }}" action="{{ route('admin.contact.destroy', $contact->id) }}" style="display: none;" method="POST">
                                     @csrf
                                     @method('DELETE')
                                 </form>
-                                <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('Are you sure? You want to delete this?')){
+                                <button type="button" class="btn btn-danger btn-sm mt-3" onclick="if(confirm('Are you sure? You want to delete this?')){
                                                     event.preventDefault();
                                                     document.getElementById('delete-form-{{ $contact->id }}').submit();
                                                 }else {
