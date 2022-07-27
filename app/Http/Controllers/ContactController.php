@@ -10,4 +10,16 @@ class ContactController extends Controller
     {
         return view('frontend.contact');
     }
+    public function store(Request $request)
+    {
+        $this->validate($request,[
+            'name' => 'required',
+            'email' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+
+
+        
+    }
 }

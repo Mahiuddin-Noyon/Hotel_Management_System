@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/','HomeController@index')->name('home');
 Route::get('/room','HomeController@room')->name('room');
 Route::get('/restaurant','HomeController@restaurant')->name('restaurant');
-Route::get('/contact','ContactController@contact')->name('contact');
 Route::get('/room/details/{id}','HomeController@single')->name('single');
 Route::get('/search','SearchController@search')->name('search');
 Route::get('/category/rooms/{slug}','HomeController@categoryrooms')->name('categoryrooms');
@@ -19,6 +18,9 @@ Route::get('/booking/{id}', 'BookingController@index')->name('booking');
 Route::get('/payment', 'BookingController@payment')->name('payment');
 Route::post('/store/{id}', 'BookingController@store')->name('store');
 Route::get('/show', 'BookingController@show')->name('show');
+
+Route::get('/contact','ContactController@contact')->name('contact');
+Route::post('/contact/store','ContactController@store')->name('contact.store');
 
 Auth::routes();
 

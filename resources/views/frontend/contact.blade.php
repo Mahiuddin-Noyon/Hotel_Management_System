@@ -49,7 +49,7 @@
         <div class="row block-9">
             <div class="col-md-6 order-md-last d-flex">
 
-                <form action="#" class="bg-white p-5 contact-form">
+                <form action="{{route('contact.store')}}" class="bg-white p-5 contact-form">
                     <div class="form-group">
                         <input type="text" name="name" class="form-control" placeholder="Your Name">
                     </div>
