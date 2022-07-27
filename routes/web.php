@@ -29,12 +29,15 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'mi
     Route::resource('category','CategoryController');
     Route::resource('facility','FacilityController');
     Route::resource('room','RoomController');
+    
     Route::get('/reservations', 'ReservationController@index')->name('reservations');
     Route::get('/reservation/{id}/show', 'ReservationController@show')->name('reservation.show');
-
     Route::get('/reservation/{id}/update', 'ReservationController@update')->name('reservation.update');
     Route::post('/reservation/{id}/destroy', 'ReservationController@destroy')->name('reservation.destroy');
-    Route::post('/contact', 'ContactController@index')->name('contact');
+
+    Route::get('/contact', 'ContactController@index')->name('contact');
+    Route::get('/contact/{$id}/show', 'ContactController@show')->name('contact.show');
+    Route::delete('/contact/{$id}/delete', 'ContactController@destroy')->name('contact.destroy');
 });
 
 Route::group(['as' => 'client.', 'prefix' => 'client', 'namespace' => 'Guest', 'middleware' => ['auth', 'client']], function () {

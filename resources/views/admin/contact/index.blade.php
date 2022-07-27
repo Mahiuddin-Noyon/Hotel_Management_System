@@ -24,6 +24,7 @@
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Subject</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Sent at</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
                             <th class="text-secondary opacity-7"></th>
                         </tr>
@@ -52,12 +53,12 @@
                                 <p class="text-xs font-weight-bold mb-0">{{str_limit($contact->subject,'30')}}</p>
                             </td>
                             <td>
-                                <img class="img-thumbnail" src="{{url('uploads/contact/', $contact->image)}}" alt="image" style="height: 70px; width:90px;">
+                                <p class="text-xs font-weight-bold mb-0">{{$contact->created_at}}</p>
                             </td>
                             <td>
-                                <a href="{{ route('admin.contact.edit',$contact->id) }}" class="btn btn-info btn-sm">Show</a>
+                                <a href="{{ route('admin.contact.show', $contact->id) }}" class="btn btn-info btn-sm">Show</a>
 
-                                <form id="delete-form-{{ $contact->id }}" action="{{ route('admin.contact.destroy',$contact->id) }}" style="display: none;" method="POST">
+                                <form id="delete-form-{{ $contact->id }}" action="{{ route('admin.contact.destroy', $contact->id) }}" style="display: none;" method="POST">
                                     @csrf
                                     @method('DELETE')
                                 </form>

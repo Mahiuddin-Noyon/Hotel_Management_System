@@ -11,6 +11,14 @@ class ContactController extends Controller
    public function index()
    {
     $contacts = Contact::all();
-    return view('admin.contac.index', compact('contacts'));
+    return view('admin.contact.index', compact('contacts'));
+   }
+   public function show($id)
+   {
+    //
+   }
+   public function destroy($id)
+   {
+    //
    }
 }
