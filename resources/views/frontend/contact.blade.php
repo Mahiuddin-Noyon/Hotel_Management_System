@@ -32,17 +32,17 @@
             </div>
             <div class="col-md-3 d-flex">
                 <div class="info bg-white p-4">
-                    <p><span>Phone:</span> <a href="tel://1234567920">+880 164 1130 547</a></p>
+                    <p><span>Phone:</span> <a href="tel:+8801641130547">+880 164 1130 547</a></p>
                 </div>
             </div>
             <div class="col-md-3 d-flex">
                 <div class="info bg-white p-4">
-                    <p><span>Email:</span> <a href="mailto:info@yoursite.com">sahinur@gmail.com</a></p>
+                    <p><span>Email:</span> sahinur@gmail.com</p>
                 </div>
             </div>
             <div class="col-md-3 d-flex">
                 <div class="info bg-white p-4">
-                    <p><span>Website</span> <a href="#">shahinur.com</a></p>
+                    <p><span>Website</span> <a href="https://www.facebook.com/rdroshahinurakter">shahinur.com</a></p>
                 </div>
             </div>
         </div>

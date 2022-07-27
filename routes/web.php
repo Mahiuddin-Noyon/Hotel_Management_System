@@ -34,6 +34,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'mi
 
     Route::get('/reservation/{id}/update', 'ReservationController@update')->name('reservation.update');
     Route::post('/reservation/{id}/destroy', 'ReservationController@destroy')->name('reservation.destroy');
+    Route::post('/contact', 'ContactController@index')->name('contact');
 });
 
 Route::group(['as' => 'client.', 'prefix' => 'client', 'namespace' => 'Guest', 'middleware' => ['auth', 'client']], function () {
