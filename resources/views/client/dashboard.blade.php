@@ -83,7 +83,6 @@
 </div>
 
 <!-- Clients booking quick view -->
-
 <div class="col-12">
     @include('layouts.partial.msg')
     <div class="card my-4 mt-5">
