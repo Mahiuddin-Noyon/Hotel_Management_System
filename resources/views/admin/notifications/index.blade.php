@@ -50,19 +50,19 @@
                             </td>
 
                             <td class="text-center">
-                                <a href="{{ route('admin.notification.show', $notification->id) }}" class="btn btn-info btn-sm">show</a>
-                                <a href="{{ route('admin.notification.edit', $notification->id) }}" class="btn btn-info btn-sm">Edit</a>
+                                <a href="{{ route('admin.notification.show', $notification->id) }}" title="Show details" class="btn btn-primary"><i class="material-icons opacity-10">visibility</i></a>
+                                <a href="{{ route('admin.notification.edit', $notification->id) }}" title="Edit" class="btn btn-info"><i class="material-icons opacity-10">edit</i></a>
 
                                 <form id="delete-form-{{ $notification->id }}" action="{{ route('admin.notification.destroy',$notification->id) }}" style="display: none;" method="POST">
                                     @csrf
                                     @method('DELETE')
                                 </form>
-                                <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('Are you sure? You want to delete this?')){
+                                <button type="button" class="btn btn-danger" title="Delete" onclick="if(confirm('Are you sure? You want to delete this?')){
                                                     event.preventDefault();
                                                     document.getElementById('delete-form-{{ $notification->id }}').submit();
                                                 }else {
                                                     event.preventDefault();
-                                                        }">Delete</button>
+                                                        }"><i class="material-icons opacity-10">delete</i></button>
                             </td>
                         </tr>
                         
