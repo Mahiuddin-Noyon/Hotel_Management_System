@@ -37,7 +37,7 @@
                 <input type="password" name="password" value="{{Auth::user()->password}}" class="form-control">
             </div>
             <div class="form-group mt-3">
-                <a href="{{ route('client.settings') }}" class="btn btn-danger">Cancel</a>
+                <a href="{{ route('client.dashboard') }}" class="btn btn-danger">Cancel</a>
                 <button type="submit" class="btn btn-primary">Update</button>
             </div>
         </form>

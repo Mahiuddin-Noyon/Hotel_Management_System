@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Guest;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notification;
 
 class NotificationController extends Controller
 {
     public function index()
     {
-        return view('client.notifications.index');
+        $notifications = Notification::all();
+        return view('client.notifications.index', compact('notifications'));
     }
 }

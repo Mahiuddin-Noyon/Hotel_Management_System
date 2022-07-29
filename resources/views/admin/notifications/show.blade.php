@@ -12,15 +12,14 @@
             <h6 class="text-white text-capitalize ps-3">All Notifications</h6>
         </div>
     </div>
-    @foreach($notifications as $key=>$notification)
     <div class="card-content mx-3 my-3">
-        <h5 class="card-title">{{$key+1}}. {{$notification->title}}</h5>
+        <h5 class="card-title">{{$notification->title}}</h5>
         <p class="card-text">{{$notification->descriptions}}</p>
     </div>
-    @endforeach
-    <div class="form-control mx-3">
-        <a href="{{ route('client.notifications') }}" class="btn btn-danger">Back</a>
-    </div>
+</div>
+<div class="form-group">
+    <a href="{{ route('admin.notification.index') }}" class="btn btn-danger">Back</a>
+    <a href="{{ route('admin.notification.edit', $notification->id) }}" class="btn btn-info">Edit</a>
 </div>
 @endsection
 

@@ -24,7 +24,7 @@
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">id</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Title</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Descriptions</th>
-                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
+                            <th class="text-uppercase text-center text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
                             <th class="text-secondary opacity-7"></th>
                         </tr>
                     </thead>
@@ -46,11 +46,12 @@
                                 </div>
                             </td>
                             <td>
-                                <p class="text-xs font-weight-bold mb-0">{{$notification->descriptions}}</p>
+                                <p class="text-xs font-weight-bold mb-0">{{str_limit($notification->descriptions,'30')}}</p>
                             </td>
 
-                            <td>
-                                <a href="{{ route('admin.notification.edit',$notification->id) }}" class="btn btn-info btn-sm">Edit</a>
+                            <td class="text-center">
+                                <a href="{{ route('admin.notification.show', $notification->id) }}" class="btn btn-info btn-sm">show</a>
+                                <a href="{{ route('admin.notification.edit', $notification->id) }}" class="btn btn-info btn-sm">Edit</a>
 
                                 <form id="delete-form-{{ $notification->id }}" action="{{ route('admin.notification.destroy',$notification->id) }}" style="display: none;" method="POST">
                                     @csrf

@@ -38,19 +38,38 @@ class NotificationController extends Controller
     
     }
 
+    public function show($id)
+    {
+        $notification = Notification::find($id);
+        return view('admin.notifications.show', compact('notification'));
+    }
     public function edit($id)
     {
-        $notification = Notification::findOrFail($id);
-        return view('admin.notification.edit', compact('notification'));
+        $notification = Notification::find($id);
+        return view('admin.notifications.edit', compact('notification'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'title' => 'required',
+            'descriptions' => 'required',
+        ]);
+    
+        $notification =  Notification::findOrFail($id);
+    
+            $notification->title = $request->title;
+            $notification->descriptions = $request->descriptions;
+            $notification->update();
+    
+            Toastr::success('Notification updated successfully','Success');
+            return redirect()->route('admin.notifications.index');
     }
 
     public function destroy($id)
     {
-        //
+        Notification::find($id)->delete();
+        Toastr::success('Notification successfully deleted','Success');
+        return redirect()->back();
     }
 }

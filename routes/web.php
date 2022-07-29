@@ -43,6 +43,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'mi
     Route::get('/notifications', 'NotificationController@index')->name('notification.index');
     Route::get('/notifications/create', 'NotificationController@create')->name('notification.create');
     Route::post('/notifications/store', 'NotificationController@store')->name('notification.store');
+    Route::get('/notifications/{id}/show', 'NotificationController@show')->name('notification.show');
     Route::get('/notifications/{id}/edit', 'NotificationController@edit')->name('notification.edit');
     Route::put('/notifications/{id}/update', 'NotificationController@update')->name('notification.update');
     Route::delete('/notifications/{id}/delete', 'NotificationController@destroy')->name('notification.destroy');
