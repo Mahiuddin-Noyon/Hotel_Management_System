@@ -54,8 +54,6 @@ Route::group(['as' => 'client.', 'prefix' => 'client', 'namespace' => 'Guest', '
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
     Route::get('/reservations', 'ReservationController@index')->name('reservations');
-    Route::get('/reservation/{id}/edit', 'ReservationController@edit')->name('reservation.edit');
-    Route::post('/reservation/{id}/updaterequest', 'ReservationController@updaterequest')->name('reservation.updaterequest');
     Route::delete('/reservation/{id}/delete', 'ReservationController@destroy')->name('reservation.destroy');
     Route::get('/settings', 'SettingsController@index')->name('settings');
     Route::put('/settings/update', 'SettingsController@update')->name('settings.update');

@@ -19,7 +19,7 @@
     </div>
     @endforeach
     <div class="form-control mx-3">
-        <a href="{{ route('client.notifications') }}" class="btn btn-danger">Back</a>
+        <a href="{{ route('client.dashboard') }}" class="btn btn-danger">Back</a>
     </div>
 </div>
 @endsection

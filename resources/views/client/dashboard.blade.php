@@ -41,7 +41,7 @@
         </div>
         <hr class="dark horizontal my-0">
         <div class="card-footer p-3">
-            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">Check </span>your facilitis now</p>
+            <p class="mb-0"><span class="text-warning text-sm font-weight-bolder">Check </span>your facilitis now</p>
         </div>
     </div>
 </div>
@@ -74,12 +74,12 @@
             </a>
             <div class="text-end pt-1">
                 <p class="text-sm mb-0 text-capitalize">Notifications</p>
-                <h4 class="mb-0"></h4>
+                <h4 class="mb-0">{{$notifications->count()}}</h4>
             </div>
         </div>
         <hr class="dark horizontal my-0">
         <div class="card-footer p-3">
-            <p class="mb-0"><span class="text-success text-sm font-weight-bolder">Notice </span>from admin</p>
+            <p class="mb-0"><span class="text-dark text-sm font-weight-bolder">Notice </span>from admin</p>
         </div>
     </div>
 </div>
@@ -148,7 +148,6 @@
 
 
                             <td>
-                                <a href="{{route('client.reservation.edit', $reservation->id)}}" class="btn btn-info btn-sm">Edit</a>
                                 <form id="delete-form-{{ $reservation->id }}" action="{{ route('client.reservation.destroy', $reservation->id) }}" style="display: none;" method="POST">
                                     @csrf
                                     @method('DELETE')

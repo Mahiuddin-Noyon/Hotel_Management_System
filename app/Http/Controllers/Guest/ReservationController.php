@@ -19,35 +19,6 @@ class ReservationController extends Controller
         return view('client.reservation.index', compact('reservations'));
     }
 
-    public function edit($id)
-    {
-        $reservation = Booking::find($id);
-        return view('client.reservation.edit', compact('reservation'));
-    }
-
-    public function updaterequest(Request $request)
-    {
-        $checkin_date = Carbon::parse($request->input('checkin_date'));
-        $checkout_date = Carbon::parse($request->input('checkout_date'));
-        $price = $request->price;
-        $result = $checkin_date->diffInDays($checkout_date, false);
-
-        if ($result > 0) {
-            $new_price = $price * $result;
-        }
-
-        $reservationrequest = new Pending();
-        
-        $reservationrequest->checkin_date  = $request->checkin_date;
-        $reservationrequest->checkout_date = $request->checkout_date;
-        $reservationrequest->price = $new_price;
-        $reservationrequest->save();
-
-        Toastr::success('Request Sent to admin. Please wait for confermation','Success');
-        return redirect()->route('client.reservations');
-    }
-
-
     public function destroy($id)
     {
 
