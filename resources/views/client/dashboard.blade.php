@@ -60,7 +60,7 @@
         </div>
         <hr class="dark horizontal my-0">
         <div class="card-footer p-3">
-            <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">Customize</span> your settings</p>
+            <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">Customize</span> your profile</p>
         </div>
     </div>
 </div>
