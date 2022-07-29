@@ -39,6 +39,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'mi
     Route::get('/contact/{id}/show', 'ContactController@show')->name('contact.show');
     Route::post('/contact/{id}/status', 'ContactController@status')->name('contact.status');
     Route::delete('/contact/{id}/delete', 'ContactController@destroy')->name('contact.destroy');
+    
 });
 
 Route::group(['as' => 'client.', 'prefix' => 'client', 'namespace' => 'Guest', 'middleware' => ['auth', 'client']], function () {

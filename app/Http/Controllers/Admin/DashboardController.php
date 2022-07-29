@@ -13,13 +13,13 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $room = Room::all();
+        $rooms = Room::all();
         $available_room = Room::where('is_available',true)->get();
-        $category = Category::all();
-        $contact = Contact::where('status',0)->get();
+        $categories = Category::all();
+        $contacts = Contact::where('status',0)->get();
         $total_contact = Contact::all();
-        $facility = Facilitiy::all();
+        $facilities = Facilitiy::all();
 
-        return view('admin.dashboard', compact('room','available_room','category','contact','facility','total_contact')); 
+        return view('admin.dashboard', compact('rooms','available_room','categories','contacts','facilities','total_contact')); 
     }
 }
