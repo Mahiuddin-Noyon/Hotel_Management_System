@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Booking;
+use App\Payment;
 use App\Room;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
@@ -28,21 +29,21 @@ class BookingController extends Controller
      \Stripe\Stripe::setApiKey('sk_test_51KxyHYIEYo0gWEDaERO4zFkkgWyNl5cqAJDvjc5YBvZMDcZsf8Mm24RWJtUe4nI5ZFIsRGWuEnGtr1gM0xHopCy300Ge4zz7H0');
 
 
-        $amount = 100;
-        $amount *= 100;
-        $amount = (int) $amount;
-        $payment_intent = \Stripe\PaymentIntent::create([
-            'description' => 'Stripe Test Payment',
-            'amount' => $amount,
-            'currency' => 'USD',
-            'description' => 'Payment From Customer',
-            'payment_method_types' => ['card'],
-        ]);
+        // $amount = 100;
+        // $amount *= 100;
+        // $amount = (int) $amount;
+        // $payment_intent = \Stripe\PaymentIntent::create([
+        //     'description' => 'Stripe Test Payment',
+        //     'amount' => $amount,
+        //     'currency' => 'USD',
+        //     'description' => 'Payment From Customer',
+        //     'payment_method_types' => ['card'],
+        // ]);
 
-        $intent = $payment_intent->client_secret;
+        // $intent = $payment_intent->client_secret;
 
         $room = Room::find($id);
-        return view('frontend.booking', compact('room','intent'));
+        return view('frontend.booking', compact('room'));
         
     }
 
@@ -62,14 +63,16 @@ class BookingController extends Controller
         if ($result > 0) {
             $total_price = $price * $result;
         }
-
+        $payment = new Payment();
+        $payment->user_id       = $id; 
+        $payment->transection_id       = $request->transection_id; 
         $booking = new Booking();
-        $booking->user_id = Auth::user()->id;
-        $booking->room_id = $id;
-        $booking->checkin_date = $request->checkin_date;
+        $booking->user_id       = Auth::user()->id;
+        $booking->room_id       = $id;
+        $booking->checkin_date  = $request->checkin_date;
         $booking->checkout_date = $request->checkout_date;
-        $booking->total_person = $request->person;
-        $booking->price = $total_price;
+        $booking->total_person  = $request->person;
+        $booking->price         = $total_price;
         $booking->save();
 
         $room = Room::find($id);

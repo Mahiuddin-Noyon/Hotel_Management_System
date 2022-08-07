@@ -3,6 +3,7 @@
 @section('title','booking')
 
 @section('content')
+
 <div class="hero-wrap" style="background-image: url({{asset('uploads/room/'. $room->image)}});">
     <div class="overlay"></div>
     <div class="container">
@@ -52,102 +53,53 @@
                                     <small for="">Total adults:</small>
                                     <input type="text" name="person" value="{{$room->person}}" class="form-control" readonly>
                                 </div>
+                            </div>
 
-                                <div class="form-group">
-                                    <div class="card-header">
-                                        <label for="card-element">
-                                            Enter your credit card information
-                                        </label>
-                                    </div>
-                                    <div class="card-body">
-                                        <div id="card-element">
-                                        </div>
-                                        <div id="card-errors" role="alert"></div>
-                                        <input type="hidden" name="plan" value="" />
-                                    </div>
+                            <div class="form-group">
+                                <small>Enter the payment method</small>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="payment" id="cod" checked onclick="cod()">
+                                    <label class="form-check-label" for="cod">
+                                        Cash on Delivery
+                                    </label>
                                 </div>
-
-                                <div class="card-footer">
-                                    <button id="card-button" class="btn btn-success btn-block" type="submit" data-secret="{{ $intent }}"> Confirm </button>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="payment" id="mobile_banking" onclick="bkash()">
+                                    <label class="form-check-label" for="mobile_banking">
+                                        Bkash
+                                    </label>
                                 </div>
                             </div>
 
+                            <div class="form-group" style="display: none ;" id="bkash">
+                                <div class="card" style="width: 18rem;">
+                                    <img src="https://www.tbsnews.net/sites/default/files/styles/big_2/public/images/2019/07/11/bkash_logo_0.jpg?itok=70lkuu3X&timestamp=1562856146" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Bkash</h5>
+                                        <p class="card-text">Send your payment to this number <small>01xxx xxx xxx</small> and enter the transaction id below </p><br>
+                                        <input type="text" name="transection_id" class="form-control" placeholder="ex: Td7zcY29cZ" required> <span class="placeholder col-12 bg-success">ex: Td7zcY29cZ</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <button id="card-button" class="btn btn-success btn-block" type="submit"> Confirm </button>
+                            </div>
                         </div>
+
                     </div>
-
-                </form>
-
             </div>
+
+            </form>
+
+        </div>
 
 
 </section>
 </div>
-
-<script src="https://js.stripe.com/v3/"></script>
 <script>
-    // Custom styling can be passed to options when creating an Element.
-    // (Note that this demo uses a wider set of styles than the guide below.)
-    var style = {
-        base: {
-            color: '#32325d',
-            lineHeight: '18px',
-            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-            fontSmoothing: 'antialiased',
-            fontSize: '16px',
-            '::placeholder': {
-                color: '#aab7c4'
-            }
-        },
-        invalid: {
-            color: '#fa755a',
-            iconColor: '#fa755a'
-        }
-    };
-
-    const stripe = Stripe('{{ $stripe_key }}', {
-        locale: 'en'
-    }); // Create a Stripe client.
-    const elements = stripe.elements(); // Create an instance of Elements.
-    const cardElement = elements.create('card', {
-        style: style
-    }); // Create an instance of the card Element.
-    const cardButton = document.getElementById('card-button');
-    const clientSecret = cardButton.dataset.secret;
-
-    cardElement.mount('#card-element'); // Add an instance of the card Element into the `card-element` <div>.
-
-    // Handle real-time validation errors from the card Element.
-    cardElement.addEventListener('change', function(event) {
-        var displayError = document.getElementById('card-errors');
-        if (event.error) {
-            displayError.textContent = event.error.message;
-        } else {
-            displayError.textContent = '';
-        }
-    });
-
-    // Handle form submission.
-    var form = document.getElementById('payment-form');
-
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        stripe.handleCardPayment(clientSecret, cardElement, {
-                payment_method_data: {
-                    //billing_details: { name: cardHolderName.value }
-                }
-            })
-            .then(function(result) {
-                console.log(result);
-                if (result.error) {
-                    // Inform the user if there was an error.
-                    var errorElement = document.getElementById('card-errors');
-                    errorElement.textContent = result.error.message;
-                } else {
-                    console.log(result);
-                    form.submit();
-                }
-            });
-    });
+    function bkash() {
+        document.getElementById("bkash").style.display = "block";
+    }
 </script>
 @endsection
