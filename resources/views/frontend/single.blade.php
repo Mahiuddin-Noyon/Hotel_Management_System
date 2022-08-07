@@ -38,7 +38,7 @@
                             </ul>
                             <ul class="list ml-md-5">
                                 <li><span>Bed: </span>{{$room->bed}}</li>
-                                <li><span>Price: </span>{{$room->price}}$ per night</li>
+                                <li><span>Price: </span>{{$room->price}}tk per night</li>
                             </ul>
                         </div>
                         <a href=" {{route('booking', $room->id)}} " class="btn btn-success btn-block">Book now</a>

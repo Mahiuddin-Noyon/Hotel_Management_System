@@ -19,14 +19,13 @@ class BookingController extends Controller
      */
     public function index(Request $request, $id)
     {
-        if(!Auth::user())
-        {
-            Toastr::warning('Please login before booking','Login First');
+        if (!Auth::user()) {
+            Toastr::warning('Please login before booking', 'Login First');
             return redirect()->route('login');
         }
 
 
-     \Stripe\Stripe::setApiKey('sk_test_51KxyHYIEYo0gWEDaERO4zFkkgWyNl5cqAJDvjc5YBvZMDcZsf8Mm24RWJtUe4nI5ZFIsRGWuEnGtr1gM0xHopCy300Ge4zz7H0');
+        \Stripe\Stripe::setApiKey('sk_test_51KxyHYIEYo0gWEDaERO4zFkkgWyNl5cqAJDvjc5YBvZMDcZsf8Mm24RWJtUe4nI5ZFIsRGWuEnGtr1gM0xHopCy300Ge4zz7H0');
 
 
         // $amount = 100;
@@ -44,7 +43,6 @@ class BookingController extends Controller
 
         $room = Room::find($id);
         return view('frontend.booking', compact('room'));
-        
     }
 
     /**
@@ -63,26 +61,28 @@ class BookingController extends Controller
         if ($result > 0) {
             $total_price = $price * $result;
         }
-        $payment = new Payment();
-        $payment->user_id       = $id; 
-        $payment->transection_id       = $request->transection_id; 
+
         $booking = new Booking();
-        $booking->user_id       = Auth::user()->id;
-        $booking->room_id       = $id;
-        $booking->checkin_date  = $request->checkin_date;
-        $booking->checkout_date = $request->checkout_date;
-        $booking->total_person  = $request->person;
-        $booking->price         = $total_price;
+        $booking->user_id        = Auth::user()->id;
+        $booking->room_id        = $id;
+        $booking->checkin_date   = $request->checkin_date;
+        $booking->checkout_date  = $request->checkout_date;
+        $booking->total_person   = $request->person;
+        $booking->price          = $total_price;
+        if ($request->transection_id) {
+            $booking->transection_id = $request->transection_id;
+        }else{
+            $booking->transection_id = "pay at hotel";
+        }
         $booking->save();
 
         $room = Room::find($id);
-        if($room->is_available == true)
-        {
+        if ($room->is_available == true) {
             $room->is_available = false;
         }
         $room->save();
 
-        Toastr::success('Room confirmed succesfully','Success');
+        Toastr::success('Room confirmed succesfully', 'Success');
         return redirect()->route('room');
     }
 }

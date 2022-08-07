@@ -34,17 +34,17 @@
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <input type="date" name="checkin_date" class="form-control " placeholder="Check In Date" required>
+                                    <input type="date" name="checkin_date" class="form-control " id="checkin" placeholder="Check In Date" required>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="date" name="checkout_date" class="form-control " placeholder="Check Out Date" required>
+                                    <input type="date" name="checkout_date" class="form-control " id="checkout" placeholder="Check Out Date" onchange="t_price()" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="select-wrap one-third">
                                     <small for="">Total price per night in USD:</small>
-                                    <input type="text" name="price" value="{{$room->price}}" class="form-control" readonly>
+                                    <input type="text" name="price" value="{{$room->price}}" class="form-control" id="total_price" readonly>
                                 </div>
                             </div>
 
@@ -57,13 +57,13 @@
 
                             <div class="form-group">
                                 <small>Enter the payment method</small>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="payment" id="cod" checked onclick="cod()">
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="payment" id="cod" checked>
                                     <label class="form-check-label" for="cod">
-                                        Cash on Delivery
+                                        Pay at Hotel
                                     </label>
                                 </div>
-                                <div class="form-check">
+                                <div class="form-check-inline">
                                     <input class="form-check-input" type="radio" name="payment" id="mobile_banking" onclick="bkash()">
                                     <label class="form-check-label" for="mobile_banking">
                                         Bkash
@@ -77,7 +77,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">Bkash</h5>
                                         <p class="card-text">Send your payment to this number <small>01xxx xxx xxx</small> and enter the transaction id below </p><br>
-                                        <input type="text" name="transection_id" class="form-control" placeholder="ex: Td7zcY29cZ" required> <span class="placeholder col-12 bg-success">ex: Td7zcY29cZ</span>
+                                        <input type="text" name="transection_id" class="form-control" placeholder="ex: Td7zcY29cZ">
                                     </div>
                                 </div>
                             </div>
@@ -98,8 +98,20 @@
 </section>
 </div>
 <script>
+    function t_price(){
+       var date1 = document.getElementById("checkin").value;
+       var date2 = document.getElementById("checkout").value;
+    }
+</script>
+<script>
     function bkash() {
-        document.getElementById("bkash").style.display = "block";
+        var mobile_banking = document.getElementById("mobile_banking");
+        var bkash = document.getElementById("bkash");
+        if (mobile_banking.checked == true) {
+            bkash.style.display = "block";
+        }else{
+            bkash.style.display = "none";
+        }
     }
 </script>
 @endsection
