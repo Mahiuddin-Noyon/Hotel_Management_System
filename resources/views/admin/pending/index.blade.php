@@ -20,9 +20,14 @@
                 <table class="table align-items-center mb-0">
                     <thead>
                         <tr>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">SL</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Checkin Date</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Checkout Date</th>
-                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Amount</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Payment Method</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Transection ID</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Facilities</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
                             <th class="text-secondary opacity-7"></th>
                         </tr>
@@ -37,7 +42,7 @@
                                     </div>
                                 </div>
                             </td>
-                            
+
                             <td>
                                 <p class="text-xs font-weight-bold mb-0">{{$reservation->checkin_date}}</p>
                             </td>
@@ -45,23 +50,34 @@
                                 <p class="text-xs font-weight-bold mb-0">{{$reservation->checkout_date}}</p>
                             </td>
                             <td>
-                                <p class="text-xs font-weight-bold mb-0">{{$reservation->price}}$</p>
+                                <p class="text-xs font-weight-bold mb-0">{{$reservation->price}} taka</p>
                             </td>
-
-
-
                             <td>
-                                <a href="{{route('admin.reservation.show', $reservation->id)}}" class="btn btn-info btn-sm">Show</a>
-                                <form id="delete-form-{{ $reservation->id }}" action="{{ route('admin.reservation.destroy', $reservation->id) }}" style="display: none;" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
-                                <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('Are you sure? You want to delete this?')){
-                                                    event.preventDefault();
-                                                    document.getElementById('delete-form-{{ $reservation->id }}').submit();
-                                                }else {
-                                                    event.preventDefault();
-                                                        }">Deny</button>
+                                @if($reservation->payment_method == 0)
+                                <p class="text-xs font-weight-bold mb-0">In Cash (hotel)</p>
+                                @else
+                                <p class="text-xs font-weight-bold mb-0">Bkash Payment)</p>
+                                @endif
+                            </td>
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0">{{$reservation->transection_id}}</p>
+                            </td>
+                            <td>
+                                <p class="text-xs font-weight-bold mb-0">{{$reservation->facilities}}</p>
+                            </td>
+                            <td>
+                                @if($reservation->status == 0)
+                                <small class="font-weight-bold mb-0" style="font-size: 10px ;"> <strong class="bg bg-danger text-white rounded p-2"><em>Approve</em></strong></small>
+                                @else
+                                <small class="font-weight-bold mb-0" style="font-size: 10px ;"><strong class="bg bg-success text-white rounded p-2"><em>Approved</em></strong></small>
+                                @endif
+                            </td>
+                            <td>
+                            @if($reservation->status == 0)
+                                <a href="{{route('admin.reservation.show', $reservation->id)}}" class="btn btn-info my-2">Confirm</a>
+                                @else
+                                <a href="{{route('admin.reservation.show', $reservation->id)}}" class="btn btn-secondary my-2">Confirmed</a>
+                            @endif
                             </td>
                         </tr>
                         @endforeach

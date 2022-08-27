@@ -54,17 +54,27 @@
                                     <input type="text" name="person" value="{{$room->person}}" class="form-control" readonly>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <div class="select-wrap one-third">
+                                    <small for="">Add a facility</small>
+                                    <select name="facilities" class="form-select form-control">
+                                        @foreach($facilities as $facility)
+                                        <option value="{{$facility->name}}">{{$facility->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <small>Enter the payment method</small>
                                 <div class="form-check-inline">
-                                    <input class="form-check-input" type="radio" name="payment" id="cod" checked>
+                                    <input class="form-check-input" value="0" type="radio" name="payment" id="cod" checked>
                                     <label class="form-check-label" for="cod">
                                         Pay at Hotel
                                     </label>
                                 </div>
                                 <div class="form-check-inline">
-                                    <input class="form-check-input" type="radio" name="payment" id="mobile_banking" onclick="bkash()">
+                                    <input class="form-check-input" type="radio" name="payment" value="1" id="mobile_banking" onchange="bkash()" required>
                                     <label class="form-check-label" for="mobile_banking">
                                         Bkash
                                     </label>
@@ -88,19 +98,19 @@
                         </div>
 
                     </div>
+
+                </form>
+
             </div>
-
-            </form>
-
         </div>
-
+    </div>
 
 </section>
 </div>
 <script>
-    function t_price(){
-       var date1 = document.getElementById("checkin").value;
-       var date2 = document.getElementById("checkout").value;
+    function t_price() {
+        var date1 = document.getElementById("checkin").value;
+        var date2 = document.getElementById("checkout").value;
     }
 </script>
 <script>
@@ -109,8 +119,8 @@
         var bkash = document.getElementById("bkash");
         if (mobile_banking.checked == true) {
             bkash.style.display = "block";
-        }else{
-            bkash.style.display = "none";
+        } else {
+            document.getElementById("bkash").style.display = "none";
         }
     }
 </script>

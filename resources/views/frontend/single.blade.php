@@ -41,7 +41,14 @@
                                 <li><span>Price: </span>{{$room->price}}tk per night</li>
                             </ul>
                         </div>
+                        @if($room->is_available == 1)
                         <a href=" {{route('booking', $room->id)}} " class="btn btn-success btn-block">Book now</a>
+                        @else
+                        <div class="card py-2">
+                            <span class="text-danger text-center">Sorry, This room is not available right now</span>
+                            <a href=" {{route('booking', $room->id)}} " class="btn btn-success btn-block d-none">Book now</a>
+                        </div>
+                        @endif
                     </div>
 
                 </div>
@@ -78,7 +85,7 @@
                             </a>
                             <div class="text p-3 text-center">
                                 <h3 class="mb-3"><a href="{{route('single', $room->id)}}"> {{$randomroom->name}} </a></h3>
-                                <p><span class="price mr-2">{{$randomroom->price}}$</span> <span class="per">per night</span></p>
+                                <p><span class="price mr-2">{{$randomroom->price}}tk</span> <span class="per">per night</span></p>
                                 <ul class="list">
                                     <li><span>Max:</span>{{$randomroom->person}}</li>
                                     <li><span>Category:</span> {{$randomroom->category->name}} </li>

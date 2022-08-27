@@ -38,10 +38,13 @@
                                 <ul class="list">
                                     <li><span>Max:</span>{{$room->person}}</li>
                                     <li><span>Category:</span> {{$room->category->name}} </li>
-                                    <li><span>Bed:</span>{{$room->bed}}</li>
+                                    <li><span>Bed:</span> {{$room->bed}}</li>
+                                    @if($room->is_available == 0)
+                                    <span class="text-danger text-center"> <em>Not available for now</em></span>
+                                    @endif
                                 </ul>
                                 <hr>
-                                <p class="pt-1"><a href="#" class="btn-custom">Book Now <span class="icon-long-arrow-right"></span></a></p>
+                                <p class="pt-1"><a href="{{route('single', $room->id)}}" class="btn-custom">View details <span class="icon-long-arrow-right"></span></a></p>
                             </div>
                         </div>
                     </div>

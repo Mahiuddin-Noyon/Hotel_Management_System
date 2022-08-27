@@ -36,7 +36,7 @@
                     <div class="desc pl-3">
                         <div class="d-flex text align-items-center">
                             <h3><span>{{$restaurant->name}}</span></h3>
-                            <span class="price">{{$restaurant->price}}$ </span>
+                            <span class="price">{{$restaurant->price}}tk </span>
                         </div>
                         <div class="d-block">
                             <p> {{$restaurant->description}} </p>

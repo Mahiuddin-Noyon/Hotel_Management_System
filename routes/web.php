@@ -32,8 +32,6 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'mi
     
     Route::get('/reservations', 'ReservationController@index')->name('reservations');
     Route::get('/reservation/{id}/show', 'ReservationController@show')->name('reservation.show');
-    Route::get('/reservation/{id}/update', 'ReservationController@update')->name('reservation.update');
-    Route::post('/reservation/{id}/destroy', 'ReservationController@destroy')->name('reservation.destroy');
 
     Route::get('/contact', 'ContactController@index')->name('contact');
     Route::get('/contact/{id}/show', 'ContactController@show')->name('contact.show');
@@ -58,4 +56,4 @@ Route::group(['as' => 'client.', 'prefix' => 'client', 'namespace' => 'Guest', '
     Route::get('/settings', 'SettingsController@index')->name('settings');
     Route::put('/settings/update', 'SettingsController@update')->name('settings.update');
     Route::get('/notifications', 'NotificationController@index')->name('notifications');
-});
+}); 

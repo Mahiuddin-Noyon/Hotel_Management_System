@@ -15,7 +15,7 @@ class ReservationController extends Controller
 {
     public function index()
     {
-        $reservations = Auth::user()->booking()->latest()->get();
+        $reservations = Booking::where('status',0)->where('user_id', Auth::id())->get();
         return view('client.reservation.index', compact('reservations'));
     }
 

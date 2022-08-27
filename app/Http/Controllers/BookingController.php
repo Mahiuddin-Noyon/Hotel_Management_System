@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Booking;
+use App\Facilitiy;
 use App\Payment;
 use App\Room;
 use Brian2694\Toastr\Facades\Toastr;
@@ -41,8 +42,9 @@ class BookingController extends Controller
 
         // $intent = $payment_intent->client_secret;
 
+        $facilities = Facilitiy::all();
         $room = Room::find($id);
-        return view('frontend.booking', compact('room'));
+        return view('frontend.booking', compact('room','facilities'));
     }
 
     /**
@@ -61,13 +63,15 @@ class BookingController extends Controller
         if ($result > 0) {
             $total_price = $price * $result;
         }
-
         $booking = new Booking();
         $booking->user_id        = Auth::user()->id;
         $booking->room_id        = $id;
         $booking->checkin_date   = $request->checkin_date;
         $booking->checkout_date  = $request->checkout_date;
         $booking->total_person   = $request->person;
+        $booking->payment_method   = $request->payment;
+        $booking->transection_id   = $request->transection_id;
+        $booking->facilities   = $request->facilities;
         $booking->price          = $total_price;
         if ($request->transection_id) {
             $booking->transection_id = $request->transection_id;
@@ -82,7 +86,7 @@ class BookingController extends Controller
         }
         $room->save();
 
-        Toastr::success('Room confirmed succesfully', 'Success');
+        Toastr::success('Admin will contact you soon', 'Done!');
         return redirect()->route('room');
     }
 }
