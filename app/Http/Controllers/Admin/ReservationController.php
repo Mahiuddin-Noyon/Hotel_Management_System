@@ -35,7 +35,7 @@ class ReservationController extends Controller
 
         if ($reservation->checkout_date == $recentDate) {
             if ($reservation->room->is_available == 0) {
-                $$reservation->room->is_available = 1;
+                $reservation->room->is_available = 1;
                 Toastr::success('Resrevation Confirmed Successfully');
                 return redirect()->back();
             }

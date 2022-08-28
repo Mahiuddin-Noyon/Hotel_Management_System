@@ -28,20 +28,6 @@ class BookingController extends Controller
 
         \Stripe\Stripe::setApiKey('sk_test_51KxyHYIEYo0gWEDaERO4zFkkgWyNl5cqAJDvjc5YBvZMDcZsf8Mm24RWJtUe4nI5ZFIsRGWuEnGtr1gM0xHopCy300Ge4zz7H0');
 
-
-        // $amount = 100;
-        // $amount *= 100;
-        // $amount = (int) $amount;
-        // $payment_intent = \Stripe\PaymentIntent::create([
-        //     'description' => 'Stripe Test Payment',
-        //     'amount' => $amount,
-        //     'currency' => 'USD',
-        //     'description' => 'Payment From Customer',
-        //     'payment_method_types' => ['card'],
-        // ]);
-
-        // $intent = $payment_intent->client_secret;
-
         $facilities = Facilitiy::all();
         $room = Room::find($id);
         return view('frontend.booking', compact('room','facilities'));
@@ -69,16 +55,16 @@ class BookingController extends Controller
         $booking->checkin_date   = $request->checkin_date;
         $booking->checkout_date  = $request->checkout_date;
         $booking->total_person   = $request->person;
-        $booking->payment_method   = $request->payment;
-        $booking->transection_id   = $request->transection_id;
+        $booking->payment_method = $request->payment;
+        $booking->transection_id = $request->transection_id;
         $booking->facilities   = $request->facilities;
-        $booking->price          = $total_price;
+        $booking->price        = $total_price;
         if ($request->transection_id) {
             $booking->transection_id = $request->transection_id;
         }else{
             $booking->transection_id = "pay at hotel";
         }
-        $booking->save();
+        $booking->save(); 
 
         $room = Room::find($id);
         if ($room->is_available == true) {

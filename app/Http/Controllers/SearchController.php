@@ -15,8 +15,7 @@ class SearchController extends Controller
         
         $category = $request->input('category');
         $bed = $request->input('bed');
-        $rooms = Room::where('name', 'LIKE', "%$category%")
-        ->orwhere('bed', 'LIKE', "%$bed%");
+        $rooms = Room::where('name', 'LIKE', "%$category%")->orwhere('bed', 'LIKE', "%$bed%")->get();
         return view('frontend.search',compact('rooms','category','bed'));
     }
 }

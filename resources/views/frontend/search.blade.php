@@ -35,7 +35,7 @@
                             </a>
                             <div class="text p-3 text-center">
                                 <h3 class="mb-3"><a href="{{route('single', $room->id)}}"> {{$room->name}} </a></h3>
-                                <p><span class="price mr-2">{{$room->price}}$</span> <span class="per">per night</span></p>
+                                <p><span class="price mr-2">{{$room->price}}tk</span> <span class="per">per night</span></p>
                                 <ul class="list">
                                     <li><span>Max: </span>{{$room->person}}</li>
                                     <li><span>Category: </span>{{$room->category->name}} </li>
